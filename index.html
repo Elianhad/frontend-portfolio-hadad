@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio de desarrollo web realizado para el curso de Argentina Programa, desarrollado con tecnología Angular, Java y MySQL"
+    />
+    <link
+      href="./dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      as="stylesheet"
+    />
+    <link href="./dist/css/index.css" rel="stylesheet" as="stylesheet" />
+    <title>Elian Emir Hadad | Portfolio</title>
+  </head>
+  <body>
+    <header class="position-relative header overflow-hidden">
+      <div class="position-absolute bg-dark h-100 w-100 overlay"></div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        class="position-absolute waves h-75"
+      >
+        <path
+          fill="#0d6efd"
+          fill-opacity="1"
+          d="M0,96L48,90.7C96,85,192,75,288,69.3C384,64,480,64,576,74.7C672,85,768,107,864,128C960,149,1056,171,1152,202.7C1248,235,1344,277,1392,298.7L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+
+      <div
+        class="d-flex flex-column flex-lg-row justify-content-between p-2 barra w-100"
+      >
+        <div
+          class="d-flex flex-row p-2 justify-content-center justify-content-md-between"
+        >
+          <h1 class="text-white m-0 text-center align-self-center">
+            Argentina Programa
+          </h1>
+          <img
+            src="./public/argentina-programa-logo.png"
+            alt="Argentina programa logo"
+            class="logo-arg"
+          />
+        </div>
+        <!--menu hamburguesa-->
+        <button id="menu" class="menu-icon align-self-center d-lg-none">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+        <!--navegacion-->
+        <div id="nav" class="d-lg-flex d-none">
+          <nav
+            class="d-flex flex-column mt-4 mt-lg-0 flex-lg-row gap-7 align-items-center nav"
+          >
+            <a
+              href="#sobre-mi"
+              class="text-decoration-none text-white link-hover"
+              >Sobre mi</a
+            >
+            <a
+              href="#proyectos"
+              class="text-decoration-none text-white link-hover"
+              >Proyectos</a
+            >
+            <a
+              href="#contacto"
+              class="text-decoration-none text-white link-hover"
+              >Contacto</a
+            >
+            <a
+              href="/login"
+              class="text-decoration-none text-white navbar-text btn btn-primary mt-2 mt-lg-0 mx-lg-4"
+              >Login</a
+            >
+          </nav>
+        </div>
+        <!--fin de navegacion-->
+      </div>
+      <div class="container row perfil">
+        <img
+          src="./public/foto-perfil.jpg"
+          alt="foto de perfil"
+          class="rounded-circle col"
+        />
+        <div class="col">
+          <h2 class="mt-4 text-center text-white">Elian Emir Hadad</h2>
+          <p class="text-white-50 text-center">Web Developer Jr.</p>
+        </div>
+      </div>
+    </header>
+    <!-- fin de header -->
+    <main class="gradiente">
+      <!-- seccion acerca de mi-->
+      <section id="sobre-mi" class="container">
+        <h2>Acerca de mi</h2>
+      </section>
+      <!-- seccion skills-->
+      <section id="skills"></section>
+      <!-- seccion Proyectos -->
+      <section id="proyectos"></section>
+      <!-- seccion contacto -->
+      <section id="contacto"></section>
+    </main>
+    <footer></footer>
+  </body>
+  <script src="./dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./dist/js/index.js"></script>
+</html>

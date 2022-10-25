@@ -1,0 +1,75 @@
+.header {
+  min-height: 30rem;
+  max-height: 45rem;
+  z-index: 1;
+}
+.overlay {
+  background-color: black;
+  z-index: -2;
+}
+.waves {
+  bottom: 0;
+  z-index: -1;
+
+}
+.barra {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position:fixed;
+}
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  gap: 0.65rem;
+  border: 0;
+}
+.menu-icon > div {
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background-color: white;
+}
+.menu-transition {
+  transition: all 0.5ms;
+  transform-origin: left;
+}
+.menu-transition > div:first-child {
+  transform: rotate(45deg) translateY(10px) translateX(10px);
+  
+}
+.menu-transition > div:nth-child(2) {
+  transform: rotate(-45deg);
+}
+.menu-transition > div:last-child {
+  opacity: 0;
+}
+
+.link-hover {
+  padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+
+}
+.link-hover:hover {
+  background-color: #0d6efd;
+  border-radius: 0.3rem;
+}
+.perfil {
+  margin-top: 10rem;
+  z-index: 1;
+}
+.perfil > img {
+  max-width: 15rem;
+}
+.gradiente {
+  background-image: linear-gradient(to bottom, #0d6efd, white );
+  height: 10rem;
+}
