@@ -26,6 +26,7 @@
       href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
     <title>Elian Emir Hadad | Portfolio</title>
   </head>
   <body>
@@ -107,8 +108,13 @@
     <main class="gradiente">
       <!-- seccion acerca de mi-->
       <section id="sobre-mi" class="container card">
-        <h2 id="sobremi-titulo" class="card-header">Sobre mi</h2>
-
+        <div class="card-header d-flex justify-content-between">
+          <h2 id="sobremi-titulo">Sobre mi</h2>
+          <div class="d-flex gap-4 align-items-center icons">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-solid fa-trash"></i>
+          </div>
+        </div>
         <div id="sobremi-descripcion" class="card-body">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi ea
           nemo ex, suscipit hic quibusdam eveniet deserunt corporis pariatur
@@ -117,7 +123,13 @@
         </div>
       </section>
       <section id="educacion" class="container card mt-2">
-        <h2 class="card-header">Educación</h2>
+        <div class="card-header d-flex justify-content-between">
+          <h2>Educación</h2>
+          <div class="d-flex gap-4 align-items-center icons">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-solid fa-trash"></i>
+          </div>
+        </div>
         <div class="card-body">
           <ul>
             <li class="border-bottom mb-2 p-1">
@@ -158,7 +170,13 @@
 
       <!-- seccion skills-->
       <section class="container card mt-2">
-        <h2 class="card-header">Habilidades</h2>
+        <div class="card-header d-flex justify-content-between">
+          <h2>Habilidades</h2>
+          <div class="d-flex gap-4 align-items-center icons">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-solid fa-trash"></i>
+          </div>
+        </div>
         <div id="skills" class="contenedor-grid">
           <div class="elemento-grid card efecto-glass">
             <img
@@ -288,4 +306,8 @@
   </body>
   <script src="./dist/js/bootstrap.bundle.min.js"></script>
   <script src="./dist/js/index.js"></script>
+  <script
+    src="https://kit.fontawesome.com/9cadfdf3e4.js"
+    crossorigin="anonymous"
+  ></script>
 </html>

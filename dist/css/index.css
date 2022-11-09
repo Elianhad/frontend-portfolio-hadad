@@ -158,3 +158,10 @@ h3 {
 .elemento-grid .progress-bar {
   padding: 0.6rem;
 }
+.icons i {
+  padding: 0.3rem;
+}
+.icons i:hover {
+  background-color: #0d6efd;
+  border-radius: 0.2rem;
+}
