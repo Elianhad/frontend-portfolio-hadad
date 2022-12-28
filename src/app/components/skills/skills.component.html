@@ -1,0 +1,24 @@
+<section class="container card mt-2">
+  <div class="card-header d-flex justify-content-between">
+    <h2>Habilidades</h2>
+    <app-buttons></app-buttons>
+  </div>
+  <div id="skills" class="contenedor-grid">
+    <div
+      class="elemento-grid card efecto-glass"
+      *ngFor="let habilidad of habilidades"
+    >
+      <img
+        src="{{ habilidad.image }}"
+        alt="logo {{ habilidad.name }}"
+        class="card-img-top"
+      />
+      <h4>{{ habilidad.name }}</h4>
+      <div class="progress">
+        <div class="progress-bar">
+          {{ habilidad.percentage }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

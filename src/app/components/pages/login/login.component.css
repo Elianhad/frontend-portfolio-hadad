@@ -1,4 +1,4 @@
-body {
+.contenedor-login {
   height: 100vh;
 }
 @media (min-width: 992px) {
@@ -6,4 +6,8 @@ body {
     max-width: 50%;
     margin: 0 auto;
   }
+}
+main {
+  margin-top: 7rem;
+
 }

@@ -1,0 +1,7 @@
+.icons i {
+  padding: 0.3rem;
+}
+.icons i:hover {
+  border: 0.1rem solid #b2b2b2;
+  border-radius: 0.2rem;
+}

@@ -1,0 +1,49 @@
+
+.contenedor-grid {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+@media (min-width: 768px) {
+  .contenedor-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1000px) {
+  .contenedor-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .contenedor-grid{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.elemento-grid {
+  width: 15rem;
+  padding: 1rem;
+  margin: 0 auto;
+  gap: 1rem;
+  display: grid;
+  max-width: 80%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  text-align: center;
+}
+
+.elemento-grid > img {
+  max-height: 10rem;
+  display: block;
+  border-radius: 0.75rem;
+}
+.elemento-grid .progress {
+  height: 1.5rem;
+}
+.progress {
+  width: 100%;
+}
+.elemento-grid .progress-bar {
+  padding: 0.6rem;
+}

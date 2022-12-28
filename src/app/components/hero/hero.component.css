@@ -1,0 +1,36 @@
+.waves {
+  bottom: 0;
+  z-index: -1;
+}
+.hero {
+  height: 30rem;
+  z-index: 1;
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+}
+.hero h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+}
+.hero  p {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 auto;
+  background-color: gray;
+  padding: 0.3rem;
+  max-width: 20rem;
+  color: white;
+}
+.hero img {
+  max-width: 15rem;
+}
+@media (min-width: 768px) {
+  .perfil h2 {
+    font-size: 2.5rem;
+  }
+  .perfil p {
+    font-size: 1.7rem;
+  }
+}

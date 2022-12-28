@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { HomeComponent } from './components/pages/home/home.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
+const routes: Routes = [
+  {
+    path: '', pathMatch:'full' ,component: HomeComponent 
+  },
+  {
+    path: 'login', component: LoginComponent 
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
