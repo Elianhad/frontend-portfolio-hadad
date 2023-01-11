@@ -1,1 +1,28 @@
-<p>form-dashboard works!</p>
+<div [ngSwitch]="formSelect">
+  <div *ngSwitchCase="formSelect === education">
+    <form
+      [formGroup]="formEducation"
+      (onSubmit)="onSubmitEducationForm($event)"
+    >
+      <input formControlName="nameEd" type="text" />
+
+      <input formControlName="campus" type="text" />
+
+      <input formControlName="date" type="datetime" />
+      <button type="submit">Aceptar</button>
+    </form>
+  </div>
+  <div *ngSwitchCase="formSelect === skills">
+    <form [formGroup]="formSkills" (onSubmit)="onSubmitSkillForm($event)">
+      <input formControlName="nameSkill" type="text" />
+
+      <input formControlName="image" type="text" />
+
+      <input formControlName="percentage" type="number" />
+      <button type="submit">Aceptar</button>
+    </form>
+  </div>
+  <div *ngSwitchDefault>
+    <app-buttonplus></app-buttonplus>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
   styleUrls: ['./education.component.css',  '../../../bootstrap.min.css']
 })
 export class EducationComponent {
+  education:string = 'education'
  educaciones: IEducation[] | null = null
  constructor(portfolioInfo:PortfolioService){
   this.educaciones = portfolioInfo.getEducation()
