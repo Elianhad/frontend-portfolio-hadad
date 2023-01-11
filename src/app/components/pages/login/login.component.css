@@ -1,13 +1,7 @@
 .contenedor-login {
   height: 100vh;
 }
-@media (min-width: 992px) {
-  form {
-    max-width: 50%;
-    margin: 0 auto;
-  }
-}
+
 main {
   margin-top: 7rem;
-
 }
