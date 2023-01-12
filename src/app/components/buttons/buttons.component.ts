@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, UrlSegment } from '@angular/router';
-import { __values } from 'tslib';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
+
 @Component({
   selector: 'app-buttons',
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.css', '../../../bootstrap.min.css']
 })
-export class ButtonsComponent {
+export class ButtonsComponent implements OnInit {
   constructor(private rutaActiva:ActivatedRoute){}
   urlName:string | null = null
   ngOnInit():void {

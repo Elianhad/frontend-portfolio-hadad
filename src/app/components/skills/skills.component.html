@@ -1,8 +1,8 @@
 <section class="container card mt-2">
   <div class="card-header d-flex justify-content-between">
     <h2>Habilidades</h2>
-    <app-buttons></app-buttons>
   </div>
+  <app-form-dashboard formSelect="skills"></app-form-dashboard>
   <div id="skills" class="contenedor-grid">
     <div
       class="elemento-grid card efecto-glass"
@@ -19,6 +19,7 @@
           {{ habilidad.percentage }}
         </div>
       </div>
+      <app-buttons></app-buttons>
     </div>
   </div>
 </section>

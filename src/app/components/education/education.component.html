@@ -3,17 +3,17 @@
     <h2>Educación</h2>
   </div>
   <div class="card-body">
+    <app-buttonplus></app-buttonplus>
+    <app-form-dashboard  formSelect="education"></app-form-dashboard>
     <ul>
-      <app-buttons></app-buttons>
       <li class="border-bottom mb-2 p-1" *ngFor="let educacion of educaciones">
-        <h3>{{educacion.name}}</h3>
-        <p>{{educacion.campus}}</p>
-        <p><small>{{educacion.date | date}}</small></p>
+        <h3>{{ educacion.name }}</h3>
+        <p>{{ educacion.campus }}</p>
+        <p>
+          <small>{{ educacion.date | date }}</small>
+        </p>
+        <app-buttons></app-buttons>
       </li>
     </ul>
-  </div>
-  <div  >
-
-    <app-form-dashboard [formSelect]="education" ></app-form-dashboard>
   </div>
 </section>

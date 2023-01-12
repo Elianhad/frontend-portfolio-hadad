@@ -1,0 +1,7 @@
+.contenedor-buttonplus {
+  display:grid;
+  align-content: center;
+}
+.contenedor-buttonplus div {
+  align-self: center;
+}

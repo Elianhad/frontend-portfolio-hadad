@@ -15,6 +15,8 @@
         placeholder="name@example.com"
       />
       <div *ngIf="email?.errors?.['required'] && email?.touched" >Es requerido</div>
+      <div *ngIf="email?.errors?.['email'] && email?.touched" >Formato no válido</div>
+
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Contraseña</label>

@@ -17,6 +17,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ButtonplusComponent } from './components/buttonplus/buttonplus.component';
 import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
+import { ButtonbackComponent } from './components/buttonback/buttonback.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormLoginComponent } from './components/form-login/form-login.component
     ContactComponent,
     ButtonplusComponent,
     FormDashboardComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    ButtonbackComponent
   ],
   imports: [
     BrowserModule,

@@ -29,3 +29,12 @@ h3 {
 .gradiente {
   background-image: linear-gradient(to bottom, #0d6efd, #0d6efd, #212529 );
 }
+
+.material-icons {
+  padding: 0.4rem;
+}
+.material-icons:hover {
+  border: 1px solid #b2b2b2;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
