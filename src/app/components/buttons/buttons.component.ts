@@ -12,7 +12,9 @@ export class ButtonsComponent implements OnInit {
   ngOnInit():void {
     const url = this.rutaActiva.url
     url.subscribe((value:UrlSegment[]) => {
-      this.urlName= value[0].path
+      if(value[0] !== undefined){
+        this.urlName= value[0].path
+      }
       })
     }
 }

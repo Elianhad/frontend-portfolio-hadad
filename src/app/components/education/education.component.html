@@ -3,8 +3,14 @@
     <h2>Educación</h2>
   </div>
   <div class="card-body">
-    <app-buttonplus></app-buttonplus>
-    <app-form-dashboard  formSelect="education"></app-form-dashboard>
+    <app-buttonplus
+      (stateFormIsActive)="makeFormVisible($event)"
+    ></app-buttonplus>
+    <app-form-dashboard
+      formSelect="education"
+      *ngIf="isFormVisible"
+      (stateFormIsInvisible)="makeFormInvisible($event)"
+    ></app-form-dashboard>
     <ul>
       <li class="border-bottom mb-2 p-1" *ngFor="let educacion of educaciones">
         <h3>{{ educacion.name }}</h3>

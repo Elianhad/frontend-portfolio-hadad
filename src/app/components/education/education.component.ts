@@ -7,9 +7,22 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
   styleUrls: ['./education.component.css',  '../../../bootstrap.min.css']
 })
 export class EducationComponent {
-  education:string = 'education'
+
+ education:string = 'education'
+ isFormVisible:boolean = false
  educaciones: IEducation[] | null = null
  constructor(portfolioInfo:PortfolioService){
   this.educaciones = portfolioInfo.getEducation()
  }
+
+ makeFormVisible(event:boolean):void{
+  this.isFormVisible = event
+  console.log(this.isFormVisible)
+
+ }
+ makeFormInvisible(event:boolean){
+  this.isFormVisible = event
+  console.log(this.isFormVisible)
+ }
+
 }
