@@ -24,5 +24,4 @@ export class ButtonplusComponent implements OnInit {
     this.stateFormIsActive.emit(true)
   }
   
-
 }

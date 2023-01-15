@@ -18,7 +18,7 @@
         <p>
           <small>{{ educacion.date | date }}</small>
         </p>
-        <app-buttons></app-buttons>
+        <app-buttons [item]="educacion.id" (edicion)="editarEducacion($event)" (eliminar)="eliminarEducacion($event)" ></app-buttons>
       </li>
     </ul>
   </div>

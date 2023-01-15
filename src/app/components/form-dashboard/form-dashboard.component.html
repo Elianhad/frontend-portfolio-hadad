@@ -48,7 +48,7 @@
       (onSubmit)="onSubmitSkillForm($event)"
       class="form-control p-4 position-relative"
     >
-      <span class="material-icons position-absolute"> highlight_off </span>
+      <span class="material-icons position-absolute" (click)="makeFormInvisible()" > highlight_off </span>
 
       <label class="form-label" for="nameSkill">Habilidad</label>
       <input
