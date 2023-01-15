@@ -1,26 +1,42 @@
 import { Injectable } from '@angular/core';
-import { ISkills } from '../interface/ISkills';
-import { habilidades } from '../mocks/skills.mock';
-import { IEducation } from '../interface/IEducation';
-import { education } from '../mocks/education.mock';
 import { HttpClient } from '@angular/common/http';
+
+import { ISkills } from '../interface/ISkills';
+import { IEducation } from '../interface/IEducation';
+
+import { habilidades } from '../mocks/skills.mock';
+import { education } from '../mocks/education.mock';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PortfolioService {
-  skills:ISkills[] | null = null
-  educations:IEducation[] | null = null
-  
-  constructor() { }
+  skills: ISkills[] | null = null;
+  educations: IEducation[] | null = null;
 
-  getSkills(){
-    return this.skills = habilidades
-  }
-  getEducation(){
-    return this.educations= education
-  }
-  deleteEducacion(id:number){
-      console.log(id)
-  }
+  constructor() {}
 
+  getSkills() {
+    return (this.skills = habilidades);
+  }
+  getEducation() {
+    return (this.educations = education);
+  }
+  postEducation(data: IEducation) {
+    console.log(data);
+  }
+  postSkill(data: ISkills) {
+    console.log(data);
+  }
+  deleteEducacion(id: number) {
+    console.log(id);
+  }
+  deleteHabilidad(id: number) {
+    console.log(id);
+  }
+  putEducacion(id: number) {
+    console.log(id);
+  }
+  putHabilidad(id: number) {
+    console.log(id);
+  }
 }
