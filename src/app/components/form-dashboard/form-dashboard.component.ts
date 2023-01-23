@@ -43,13 +43,18 @@ export class FormDashboardComponent implements OnInit {
         this.isDashboard = this.urlName === 'dashboard';
       }
     });
-    if (this.itemEditar !== null) {
+
+    // TODO: cambiar lógica de recepcion de datos a datos por routing y no por evento
+    /*
+    if (this.itemEditar.url === '') {
       this.formEducation.setValue({
         nameEd: this.itemEditar.name,
         campus: this.itemEditar.campus,
         date: this.itemEditar.date,
       });
     }
+    */
+    
   }
 
   onSubmitEducationForm(event: Event) {

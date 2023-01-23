@@ -26,9 +26,13 @@ export class ButtonsComponent implements OnInit {
     this.eliminar.emit(id)
     // envio id a componente padre para realizar logica de eliminación
   }
-  editarItem(id:any):void{
-    this.edicion.emit(id)
+  editarItem(item:any):void{
     // esto va a componente padre (education, skills) para realizar la logica de setValue del formulario
+    const enviarEvento = {
+      item: item,
+      url: this.urlName
+    }
+    this.edicion.emit(enviarEvento)
   }
 
 }
