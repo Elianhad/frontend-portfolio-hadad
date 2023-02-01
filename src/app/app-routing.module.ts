@@ -3,35 +3,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
-import { EducationComponent } from './components/education/education.component';
-import { SkillsComponent } from './components/skills/skills.component';
+import { Page404Component } from './components/page404/page404.component';
+import { AuthGuard } from './guards/auth.guard';
 
-// TODO: realizar authGuard y su lógica con JWT
 const routes: Routes = [
   {
-    path: 'home',component: HomeComponent 
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
-    path: '', redirectTo: 'home', pathMatch: 'full', 
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path: 'login', component: LoginComponent 
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: 'dashboard', component: DashboardComponent,
-    children: [
-      {
-        path: 'educacion', component: EducationComponent
-      },
-      {
-        path: 'habilidades', component: SkillsComponent
-      }
-    ]
-  }
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**',
+    component: Page404Component,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

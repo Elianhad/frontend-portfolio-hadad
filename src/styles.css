@@ -31,7 +31,10 @@ h3 {
 }
 
 .material-icons {
+  position: absolute;
   padding: 0.4rem;
+  top: 2px;
+  right: 2px;
 }
 .material-icons:hover {
   border: 1px solid #b2b2b2;

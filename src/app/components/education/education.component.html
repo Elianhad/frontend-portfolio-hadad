@@ -1,25 +1,16 @@
 <section id="educacion" class="container card mt-2">
   <div class="card-header d-flex justify-content-between">
     <h2>Educación</h2>
+    <app-buttonplus (click)="makeFormVisible(true)"  ></app-buttonplus>
   </div>
   <div class="card-body">
-    <app-buttonplus
-      (stateFormIsActive)="makeFormVisible($event)"
-    ></app-buttonplus>
-    <app-form-dashboard
-      formSelect="education"
-      *ngIf="isFormVisible"
-      (stateFormIsInvisible)="makeFormInvisible($event)"
-      [itemEditar]="itemAEditar"
-    ></app-form-dashboard>
     <ul>
       <li class="border-bottom mb-2 p-1" *ngFor="let educacion of educaciones">
         <h3>{{ educacion.name }}</h3>
         <p>{{ educacion.campus }}</p>
         <p>
-          <small>{{ educacion.date | date }}</small>
+          <small>{{ educacion.date }}</small>
         </p>
-        <app-buttons [item]="educacion.id" (edicion)="editarEducacion($event)" (eliminar)="eliminarEducacion($event)" ></app-buttons>
       </li>
     </ul>
   </div>

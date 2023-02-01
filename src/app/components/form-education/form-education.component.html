@@ -1,0 +1,32 @@
+<form
+  [formGroup]="formEducation"
+  (onSubmit)="onSubmitEducationForm($event)"
+  class="form-control p-4 position-relative"
+>
+  <span class="material-icons"> cancel </span>
+  <label class="form-label" for="nameEd">Título</label>
+  <input
+    formControlName="nameEd"
+    type="text"
+    class="form-control"
+    id="nameEd"
+  />
+  <label class="form-label" for="campus">Institución</label>
+  <input
+    formControlName="campus"
+    type="text"
+    class="form-control"
+    id="campus"
+  />
+  <label class="form-label" for="fecha">Fecha </label>
+  <input
+    formControlName="date"
+    type="datetime"
+    class="form-control"
+    id="fecha"
+  />
+
+  <button type="submit" class="btn btn-primary text-center text-uppercase mt-2">
+    Aceptar
+  </button>
+</form>

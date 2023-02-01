@@ -1,0 +1,27 @@
+<form
+  (onSubmit)="onSubmitSkillForm($event)"
+  class="form-control p-4 position-relative"
+  [formGroup]="formSkills"
+>
+  <span class="material-icons"> cancel </span>
+  <label class="form-label" for="nameSkill">Habilidad</label>
+  <input
+    formControlName="nameSkill"
+    type="text"
+    class="form-control"
+    id="nameSkill"
+  />
+  <label class="form-label" for="image">Imagen</label>
+  <input formControlName="image" type="text" class="form-control" id="imagen" />
+  <label class="form-label" for="percentage">Porcentaje de experticia</label>
+  <input
+    formControlName="percentage"
+    type="number"
+    id="percentage"
+    class="form-control"
+  />
+  <button type="submit" class="btn btn-primary text-center text-uppercase mt-2">
+    Aceptar
+  </button>
+  <h3 class="text-center">Habilidad</h3>
+</form>

@@ -1,33 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IEducation } from 'src/app/interface/IEducation';
 import { PortfolioService } from 'src/app/service/portfolio.service';
+import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css', '../../../bootstrap.min.css'],
 })
 export class EducationComponent implements OnInit {
+  @Output() 
+  emitStateFormEd:EventEmitter<boolean> = new EventEmitter()
   education: string = 'education';
-  isFormVisible: boolean = false;
   educaciones: IEducation[] | null = null;
 
   itemAEditar:IEducation | null = null
 
-  constructor(private portfolioInfo: PortfolioService) {
+  constructor(private portfolioInfo: PortfolioService, private uiState:EstadosUIService) {
     this.educaciones = portfolioInfo.getEducation();
   }
   ngOnInit(): void {}
 
-  makeFormVisible(event: boolean): void {
-    this.isFormVisible = !this.isFormVisible;
+  makeFormVisible(event:boolean): void {
+    this.emitStateFormEd.emit(event)    
   }
-  makeFormInvisible(event: boolean) {
-    this.isFormVisible = !this.isFormVisible;
-    
-  }
+
   editarEducacion(event: any) {
     //  evento al formulario para setValue y edición
-    this.isFormVisible = !this.isFormVisible;
     const educacionAEditar:any = this.educaciones?.filter( ed => ed.id === event)
     this.itemAEditar = educacionAEditar?.[0]
   }

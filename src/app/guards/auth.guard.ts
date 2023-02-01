@@ -5,10 +5,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthguardGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+      // TODO: logica para que retorne false si no hay token
+      /*
+      if(!sessionStorage.token){
+        router.navigate('login')
+        return false
+      }
+      */
     return true;
   }
   

@@ -1,5 +1,12 @@
-<app-header></app-header>
-<app-hero></app-hero>
-<app-about></app-about>
-<app-education></app-education>
-<app-skills></app-skills>
+<div class="contenedor-dashboard">
+  <app-header></app-header>
+  <app-hero></app-hero>
+  <app-about></app-about>
+  <app-education (emitStateFormEd)="stateChilFormEd($event)"></app-education>
+  <app-skills (emitFormSkill)="stateChildFormSkill($event)"></app-skills>
+  <app-form-education
+    *ngIf="isFormEducation"
+    class="app-form"
+  ></app-form-education>
+  <app-form-skills *ngIf="isFormSkill" class="app-form"></app-form-skills>
+</div>

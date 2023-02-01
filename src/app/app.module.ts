@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,13 +13,14 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
-import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ButtonplusComponent } from './components/buttonplus/buttonplus.component';
-import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { ButtonbackComponent } from './components/buttonback/buttonback.component';
+import { FormEducationComponent } from './components/form-education/form-education.component';
+import { FormSkillsComponent } from './components/form-skills/form-skills.component';
+import { Page404Component } from './components/page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -32,22 +33,23 @@ import { ButtonbackComponent } from './components/buttonback/buttonback.componen
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    ButtonsComponent,
     ProjectsComponent,
     ContactComponent,
     ButtonplusComponent,
-    FormDashboardComponent,
     FormLoginComponent,
-    ButtonbackComponent
+    ButtonbackComponent,
+    FormEducationComponent,
+    FormSkillsComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

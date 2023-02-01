@@ -1,15 +1,9 @@
 <section class="container card mt-2">
   <div class="card-header d-flex justify-content-between">
     <h2>Habilidades</h2>
+    <app-buttonplus (click)="makeFormVisible(true)"></app-buttonplus>
   </div>
-  <app-buttonplus
-    (stateFormIsActive)="makeFormVisible($event)"
-  ></app-buttonplus>
-  <app-form-dashboard
-    formSelect="skills"
-    *ngIf="isFormVisible"
-    (stateFormIsInvisible)="makeFormInvisible($event)"
-  ></app-form-dashboard>
+
   <div id="skills" class="contenedor-grid">
     <div
       class="elemento-grid card efecto-glass"
@@ -26,7 +20,6 @@
           {{ habilidad.percentage }}
         </div>
       </div>
-      <app-buttons [item]="habilidad.id" (edicion)="editarSkill($event)" (eliminar)="eliminarHabilidad($event)" ></app-buttons>
     </div>
   </div>
 </section>
