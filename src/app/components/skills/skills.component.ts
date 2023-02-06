@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { ISkills } from 'src/app/interface/ISkills';
 import { PortfolioService } from 'src/app/service/portfolio.service';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
@@ -7,16 +8,23 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css', '../../../bootstrap.min.css'],
 })
-export class SkillsComponent {
+export class SkillsComponent implements OnInit {
   @Output()
   emitFormSkill: EventEmitter<boolean> = new EventEmitter();
-
+  isUrlDashboard:boolean= false
   habilidades: ISkills[] | null = null;
 
   skills: string = 'skills';
 
-  constructor(infoPortfolio: PortfolioService, private stateService:EstadosUIService) {
-    this.habilidades = infoPortfolio.getSkills();
+  constructor(private infoPortfolio: PortfolioService, private stateService:EstadosUIService, private route:ActivatedRoute) {
+  
+  }
+  ngOnInit():void{
+    this.habilidades = this.infoPortfolio.getSkills();
+    this.route.url.subscribe((value: UrlSegment[]) => {
+      this.isUrlDashboard = value[0].path === 'dashboard';
+    });
+
   }
 
   makeFormVisible(event: boolean): void {

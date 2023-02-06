@@ -56,3 +56,10 @@ h3 {
     margin: 0 auto;
   }
 }
+.botones-acciones {
+  display: flex;
+  gap: 2rem;
+}
+.botones-acciones .material-icons {
+  position: static;
+}

@@ -21,6 +21,8 @@ import { ButtonbackComponent } from './components/buttonback/buttonback.componen
 import { FormEducationComponent } from './components/form-education/form-education.component';
 import { FormSkillsComponent } from './components/form-skills/form-skills.component';
 import { Page404Component } from './components/page404/page404.component';
+import { ButtonEditComponent } from './components/button-edit/button-edit.component';
+import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { Page404Component } from './components/page404/page404.component';
     FormEducationComponent,
     FormSkillsComponent,
     Page404Component,
+    ButtonEditComponent,
+    ButtonDeleteComponent,
   ],
   imports: [
     BrowserModule,

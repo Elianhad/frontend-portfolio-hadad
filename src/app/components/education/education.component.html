@@ -9,8 +9,12 @@
         <h3>{{ educacion.name }}</h3>
         <p>{{ educacion.campus }}</p>
         <p>
-          <small>{{ educacion.date }}</small>
+          <small>{{ educacion.date | date }}</small>
         </p>
+        <div class="botones-acciones" *ngIf="isUrlDashboard" >
+          <app-button-edit></app-button-edit>
+          <app-button-delete></app-button-delete>
+        </div>
       </li>
     </ul>
   </div>

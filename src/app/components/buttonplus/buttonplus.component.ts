@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({

@@ -16,9 +16,20 @@
       />
       <h4>{{ habilidad.name }}</h4>
       <div class="progress">
-        <div class="progress-bar">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ariaValueNow]="habilidad.percentage"
+          style="width: {{ habilidad.percentage }}%;"
+        >
           {{ habilidad.percentage }}
         </div>
+      </div>
+      <div class="botones-acciones" *ngIf="isUrlDashboard">
+        <app-button-edit></app-button-edit>
+        <app-button-delete></app-button-delete>
       </div>
     </div>
   </div>
