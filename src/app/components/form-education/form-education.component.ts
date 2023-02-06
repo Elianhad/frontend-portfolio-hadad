@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EstadosUIService } from 'src/app/service/estados-ui.service';
 
 @Component({
   selector: 'app-form-education',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormEducationComponent implements OnInit {
   formEducation: FormGroup = new FormGroup({});
 
-  constructor(private formbuilder: FormBuilder) {}
+  constructor(private formbuilder: FormBuilder, private stateService:EstadosUIService) {}
 
   ngOnInit(): void {
     this.formEducation = this.formbuilder.group({
@@ -38,5 +39,8 @@ export class FormEducationComponent implements OnInit {
   }
   onSubmitEducationForm(event: any) {
     this.formEducation.setValue(event);
+  }
+  makeFormInvisible(){
+    this.stateService.changeStateFormEd(false)
   }
 }

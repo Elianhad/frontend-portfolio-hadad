@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-form-skills',
   templateUrl: './form-skills.component.html',
@@ -9,7 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private stateService: EstadosUIService
+  ) {
     this.formSkills = this.formBuilder.group({
       nameSkill: [
         '',
@@ -29,5 +32,8 @@ export class FormSkillsComponent implements OnInit {
   ngOnInit(): void {}
   onSubmitSkillForm(event: any) {
     this.formSkills.setValue(event);
+  }
+  makeFormInVisible() {
+    this.stateService.changeStateFormSkill(false);
   }
 }

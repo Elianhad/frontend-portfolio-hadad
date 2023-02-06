@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ISkills } from 'src/app/interface/ISkills';
 import { PortfolioService } from 'src/app/service/portfolio.service';
+import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -14,16 +15,14 @@ export class SkillsComponent {
 
   skills: string = 'skills';
 
-  constructor(infoPortfolio: PortfolioService) {
+  constructor(infoPortfolio: PortfolioService, private stateService:EstadosUIService) {
     this.habilidades = infoPortfolio.getSkills();
   }
 
   makeFormVisible(event: boolean): void {
-    this.emitFormSkill.emit(event);
+    this.stateService.changeStateFormSkill(event)
   }
-  makeFormInvisible(event: boolean) {
-    console.log(event);
-  }
+  
   editarSkill(event: any) {
     // TODO: logica para enviar a formulario para edicion
     console.log(event);

@@ -8,8 +8,6 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
   styleUrls: ['./education.component.css', '../../../bootstrap.min.css'],
 })
 export class EducationComponent implements OnInit {
-  @Output() 
-  emitStateFormEd:EventEmitter<boolean> = new EventEmitter()
   education: string = 'education';
   educaciones: IEducation[] | null = null;
 
@@ -20,8 +18,8 @@ export class EducationComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  makeFormVisible(event:boolean): void {
-    this.emitStateFormEd.emit(event)    
+  makeFormVisible(): void {
+    this.uiState.changeStateFormEd(true)
   }
 
   editarEducacion(event: any) {

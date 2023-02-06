@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EstadosUIService } from 'src/app/service/estados-ui.service';
+import { EstadosUIService, State } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,15 +7,12 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
 })
 export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
-  isFormEducation: boolean = false;
+  isFormEducation:boolean= false
 
   constructor(private uiState: EstadosUIService) {}
 
-  ngOnInit(): void {}
-  stateChilFormEd(event: boolean) {
-    this.isFormEducation = event;
-  }
-  stateChildFormSkill(event: boolean) {
-    this.isFormSkill = event;
+  ngOnInit(): void {
+    this.uiState.stateFE.subscribe( state => this.isFormEducation = state.visibility)
+    this.uiState.stateSK.subscribe(state => this.isFormSkill = state.visibility)
   }
 }
