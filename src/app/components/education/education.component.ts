@@ -16,12 +16,16 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private portfolioInfo: PortfolioService,
+    // import service of states
     private uiState: EstadosUIService,
     private route: ActivatedRoute
   ) {
     this.educaciones = portfolioInfo.getEducation();
   }
+
+
   ngOnInit(): void {
+    // subscribe to the state of visibility of form
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
@@ -30,7 +34,9 @@ export class EducationComponent implements OnInit {
   makeFormVisible(): void {
     this.uiState.changeStateFormEd(true);
   }
-
+  editarEducacion(educacion:IEducation) {
+    this.uiState.fillFormAndEdit(true, educacion, "educacion")
+  }
   eliminarEducacion(event: any) {
     // TODO: realizar logica de eliminación a traves de service
     console.log(event);

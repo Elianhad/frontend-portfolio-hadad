@@ -24,14 +24,14 @@ export class FormSkillsComponent implements OnInit {
           ]),
         ],
       ],
-      image: ['', [Validators.required]],
       percentage: [Number, [Validators.required]],
     });
   }
 
   ngOnInit(): void {}
   onSubmitSkillForm(event: any) {
-    this.formSkills.setValue(event);
+    console.log(event)
+    //this.formSkills.setValue(event);
   }
   makeFormInVisible() {
     this.stateService.changeStateFormSkill(false);

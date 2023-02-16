@@ -12,7 +12,7 @@
           <small>{{ educacion.date | date }}</small>
         </p>
         <div class="botones-acciones" *ngIf="isUrlDashboard" >
-          <app-button-edit></app-button-edit>
+          <app-button-edit (click)="editarEducacion(educacion)" ></app-button-edit>
           <app-button-delete></app-button-delete>
         </div>
       </li>

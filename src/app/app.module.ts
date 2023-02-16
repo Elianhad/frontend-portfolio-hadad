@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CloudinaryModule } from '@cloudinary/ng';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -52,6 +53,7 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    CloudinaryModule
   ],
   providers: [],
   bootstrap: [AppComponent],

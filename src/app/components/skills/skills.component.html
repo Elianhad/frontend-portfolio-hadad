@@ -22,8 +22,9 @@
           aria-valuemin="0"
           aria-valuemax="100"
           [ariaValueNow]="habilidad.percentage"
-          style="width: {{ habilidad.percentage }}%;"
+          [style.width.%]="habilidad.percentage"
         >
+      
           {{ habilidad.percentage }}
         </div>
       </div>
