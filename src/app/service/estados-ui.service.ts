@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IEducation } from '../interface/IEducation';
-import { ISkills } from '../interface/ISkills';
 
 const INITIAL_STATE_FORM_ED: State = {
   visibility: false,
@@ -31,21 +29,6 @@ export class EstadosUIService {
   changeStateFormSkill(newState: boolean) {
     const oldState = this._stateSk.getValue();
     this._stateSk.next({ ...oldState, visibility: newState });
-  }
-  fillFormAndEdit(
-    openClose: boolean,
-    editObj: IEducation | ISkills,
-    tipeForm: string
-  ) {
-    if (tipeForm === 'educacion') {
-      // TODO: add change state of content form
-      this.changeStateFormEd(openClose);
-    }
-    if (tipeForm === 'skills') {
-      // TODO: add change state of content form
-
-      this.changeStateFormSkill(openClose);
-    }
   }
 }
 

@@ -23,7 +23,6 @@ export class EducationComponent implements OnInit {
     this.educaciones = portfolioInfo.getEducation();
   }
 
-
   ngOnInit(): void {
     // subscribe to the state of visibility of form
     this.route.url.subscribe((value: UrlSegment[]) => {
@@ -34,11 +33,12 @@ export class EducationComponent implements OnInit {
   makeFormVisible(): void {
     this.uiState.changeStateFormEd(true);
   }
-  editarEducacion(educacion:IEducation) {
-    this.uiState.fillFormAndEdit(true, educacion, "educacion")
+  editar(){
+
   }
-  eliminarEducacion(event: any) {
+  eliminar(event: any) {
     // TODO: realizar logica de eliminación a traves de service
     console.log(event);
+    
   }
 }
