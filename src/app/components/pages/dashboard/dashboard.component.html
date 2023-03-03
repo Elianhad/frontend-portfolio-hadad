@@ -7,6 +7,7 @@
   <app-form-education
     *ngIf="isFormEducation"
     class="app-form"
+    (emit)="receiveSelectedItem($event)"
   ></app-form-education>
   <app-form-skills *ngIf="isFormSkill" class="app-form"></app-form-skills>
 </div>

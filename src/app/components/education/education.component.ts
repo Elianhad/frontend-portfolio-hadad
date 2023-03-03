@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { IEducation } from 'src/app/interface/IEducation';
 import { PortfolioService } from 'src/app/service/portfolio.service';
@@ -12,7 +12,7 @@ export class EducationComponent implements OnInit {
   education: string = 'education';
   educaciones: IEducation[] | null = null;
   isUrlDashboard: boolean = false;
-  itemAEditar: IEducation | null = null;
+  @Output() educationSelectedEmit:EventEmitter<IEducation> = new EventEmitter()
 
   constructor(
     private portfolioInfo: PortfolioService,
@@ -33,8 +33,8 @@ export class EducationComponent implements OnInit {
   makeFormVisible(): void {
     this.uiState.changeStateFormEd(true);
   }
-  editar(){
-
+  editar(seleccion: IEducation) {
+    this.educationSelectedEmit.emit(seleccion)
   }
   eliminar(event: any) {
     // TODO: realizar logica de eliminación a traves de service
