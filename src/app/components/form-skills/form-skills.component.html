@@ -1,6 +1,6 @@
 <div class="container-form">
   <form
-    (onSubmit)="onSubmitSkillForm($event)"
+    (submit)="onSubmitSkillForm($event)"
     class="form-control p-4 position-relative"
     [formGroup]="formSkills"
   >
@@ -13,10 +13,26 @@
         class="form-control"
         id="nameSkill"
       />
+      <div *ngIf="nameSkill?.errors?.['required'] && nameSkill?.touched ">
+        El campo es obligatorio
+      </div>
     </div>
     <div class="mt-4">
       <label class="form-label" for="image">Imagen</label>
-      <input type="file" class="form-control" id="imagen" required />
+      <input
+        type="file"
+        accept="image/png, image/jpeg"
+        class="form-control"
+        id="imagen"
+        formControlName="imagen"
+        (change)="handleImage($event)"
+      />
+      <div *ngIf="imagen?.errors?.['required'] && imagen?.touched">
+        El campo es obligatorio
+      </div>
+    </div>
+    <div class="w-10" *ngIf="imgfile">
+      <img [src]="imgfile" alt="imagen nueva" />
     </div>
     <div class="mt-4">
       <label class="form-label" for="percentage"
@@ -28,12 +44,12 @@
         id="percentage"
         class="form-control"
       />
+      <div *ngIf="percentage?.errors?.['required'] && percentage?.touched">
+        El campo es obligatorio
+      </div>
     </div>
 
-    <button
-      type="submit"
-      class="btn btn-primary text-center text-uppercase mt-2"
-    >
+    <button class="btn btn-primary text-center text-uppercase mt-2">
       Aceptar
     </button>
     <h3 class="text-center">Habilidad</h3>
