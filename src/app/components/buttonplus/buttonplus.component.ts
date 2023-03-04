@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-buttonplus',
   templateUrl: './buttonplus.component.html',
@@ -12,7 +11,6 @@ export class ButtonplusComponent implements OnInit {
 
   constructor(
     private rutaActiva: ActivatedRoute,
-    private stateService: EstadosUIService
   ) {}
   ngOnInit(): void {
     const url = this.rutaActiva.url;

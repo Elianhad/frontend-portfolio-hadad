@@ -31,8 +31,9 @@
         El campo es obligatorio
       </div>
     </div>
-    <div class="w-10" *ngIf="imgfile">
-      <img [src]="imgfile" alt="imagen nueva" />
+    <div class="w-25 mt-3 flex gap-2 align-content-center position-relative" *ngIf="filePathImg">
+      <img [src]="filePathImg" className="w-10" alt="imagen nueva" />
+      <app-button-delete (click)="onDeleteImg()"></app-button-delete>
     </div>
     <div class="mt-4">
       <label class="form-label" for="percentage"

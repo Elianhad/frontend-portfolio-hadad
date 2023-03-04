@@ -14,29 +14,29 @@ export class PortfolioService {
   educations: IEducation[] | null = null;
 
   constructor() {}
-
-  getSkills() {
-    return (this.skills = habilidades);
-  }
   getEducation() {
     return (this.educations = education);
   }
   postEducation(data: IEducation) {
     console.log(data);
   }
-  postSkill(data: ISkills) {
-    console.log(data);
-  }
+ 
   deleteEducacion(id: number) {
-    console.log(id);
-  }
-  deleteHabilidad(id: number) {
     console.log(id);
   }
   putEducacion(id: number) {
     console.log(id);
   }
-  putHabilidad(id: number) {
+  getSkills() {
+    return (this.skills = habilidades);
+  }
+  postSkill(data: ISkills) {
+    console.log(data);
+  }
+  deleteSkill(id: number) {
+    console.log(id);
+  }
+  putSkill(id: number) {
     console.log(id);
   }
 }
