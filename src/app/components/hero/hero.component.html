@@ -12,8 +12,9 @@
   </svg>
 
   <div class="row perfil container">
-    <div class="col d-flex flex-column align-items-center gap-2">
+    <div class="col d-flex flex-column align-items-center gap-2 position-relative">
       <img src="{{ fotoperfil }}" alt="foto de perfil" class="rounded-circle" />
+      <app-button-edit *ngIf="isInDashboard"></app-button-edit>
     </div>
 
     <div class="col">

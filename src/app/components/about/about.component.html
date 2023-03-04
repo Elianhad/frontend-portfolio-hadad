@@ -1,10 +1,33 @@
 <section id="sobre-mi" class="container card">
   <div class="card-header d-flex justify-content-between">
     <h2 id="sobremi-titulo">Sobre mi</h2>
+    <app-button-edit
+      *ngIf="isInDashboard"
+      (click)="toggleForm(true)"
+    ></app-button-edit>
   </div>
   <div id="sobremi-descripcion" class="card-body">
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi ea nemo ex,
     suscipit hic quibusdam eveniet deserunt corporis pariatur adipisci quas at
     similique sapiente dolorum laborum reprehenderit nihil enim facere!
+  </div>
+  <div *ngIf="isFormActive" class="container-form form-about">
+    <form class="card p-5 rounded" (submit)="submitAbout()">
+      <span class="material-icons" (click)="toggleForm(false)">close</span>
+      <h3 class="card-title">Agrega una descripcion acerca de ti</h3>
+      <input
+        type="text"
+        placeholder="Soy una persona proactiva..."
+        class="form-control"
+        [formControl]="about"
+      />
+      <span *ngIf="about?.errors && about.touched">{{ about.errors }}</span>
+      <button
+        class="btn btn-primary mt-4 w-25 m-auto"
+        [disabled]="about.invalid"
+      >
+        Aceptar
+      </button>
+    </form>
   </div>
 </section>

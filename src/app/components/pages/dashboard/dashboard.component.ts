@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
   isFormEducation: boolean = false;
   itemEducationSelected: IEducation | null = null;
-
+  isInDashboard:boolean= true
   constructor(private uiState: EstadosUIService) {}
 
   ngOnInit(): void {

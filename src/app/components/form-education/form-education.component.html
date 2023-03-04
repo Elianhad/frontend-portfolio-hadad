@@ -1,7 +1,7 @@
 <div class="container-form">
   <form
     [formGroup]="formEducation"
-    (onSubmit)="onSubmitEducationForm($event)"
+    (submit)="onSubmitEducationForm($event)"
     class="form-control p-4 position-relative"
   >
     <span class="material-icons" (click)="makeFormInvisible()"> cancel </span>
@@ -30,7 +30,9 @@
     <button
       type="submit"
       class="btn btn-primary text-center text-uppercase mt-2"
+      [disabled]="!formEducation.valid"
     >
+
       Aceptar
     </button>
   </form>
