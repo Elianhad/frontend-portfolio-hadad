@@ -5,8 +5,13 @@
 .hero {
   height: 30rem;
   z-index: 1;
-  padding-top: 6rem;
+  padding-top: 10rem;
   padding-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 6rem;
+  }
 }
 .hero h2 {
   font-size: 1.7rem;

@@ -4,7 +4,7 @@ import { IUsuario } from 'src/app/interface/IUsuario';
 @Component({
   selector: 'app-form-login',
   templateUrl: './form-login.component.html',
-  styleUrls: ['./form-login.component.css', '../../../bootstrap.min.css']
+  styleUrls: ['./form-login.component.css']
 })
 export class FormLoginComponent implements OnInit {
   @Output() emit:EventEmitter<IUsuario> = new EventEmitter()

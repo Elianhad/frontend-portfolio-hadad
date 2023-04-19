@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -23,6 +23,8 @@ import { FormSkillsComponent } from './components/form-skills/form-skills.compon
 import { Page404Component } from './components/page404/page404.component';
 import { ButtonEditComponent } from './components/button-edit/button-edit.component';
 import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { InterceptorRequestService } from './service/interceptor-request.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
     Page404Component,
     ButtonEditComponent,
     ButtonDeleteComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +55,11 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorRequestService, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

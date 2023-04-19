@@ -1,16 +1,17 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IEducation } from 'src/app/interface/IEducation';
-import { EstadosUIService, State } from 'src/app/service/estados-ui.service';
+import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css', '../../../../bootstrap.min.css'],
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
   isFormEducation: boolean = false;
   itemEducationSelected: IEducation | null = null;
-  isInDashboard:boolean= true
+  isInDashboard: boolean = true
+  
   constructor(private uiState: EstadosUIService) {}
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit {
       (state) => (this.isFormSkill = state.visibility)
     );
   }
-  receiveSelectedItem(event: any) {
+  receiveSelectedItem(event:any) {
     console.log(event);
     this.itemEducationSelected = event;
   }

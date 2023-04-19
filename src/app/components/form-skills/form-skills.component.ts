@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
-import { PortfolioService } from 'src/app/service/portfolio.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 import { ISkills } from 'src/app/interface/ISkills';
 // TODO: add spinner uploading image
 @Component({
   selector: 'app-form-skills',
   templateUrl: './form-skills.component.html',
-  styleUrls: ['./form-skills.component.css', '../../../bootstrap.min.css'],
+  styleUrls: ['./form-skills.component.css'],
 })
 export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup;
@@ -25,7 +24,6 @@ export class FormSkillsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private stateService: EstadosUIService,
     private uploadService: UploadImageServiceService,
-    private portfolioService: PortfolioService
   ) {
     this.formSkills = this.formBuilder.group({
       nameSkill: [
@@ -50,12 +48,10 @@ export class FormSkillsComponent implements OnInit {
     $event.preventDefault;
     if (!this.formSkills.valid) return;
     const newSkills: ISkills = {
-      name: this.formSkills.value.nameSkill,
-      image: this.filePathImg,
-      percentage: this.formSkills.value.percentage,
-      id: Math.random(),
+      nameSkill: this.formSkills.value.nameSkill,
+      imageSkill: this.filePathImg,
+      percentageSkill: this.formSkills.value.percentage,
     };
-    this.portfolioService.postSkill(newSkills);
   }
   get nameSkill() {
     return this.formSkills.get('nameSkill');

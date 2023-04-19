@@ -2,12 +2,13 @@
   <app-header></app-header>
   <app-hero [isInDashboard]="isInDashboard" ></app-hero>
   <app-about [isInDashboard]="isInDashboard"></app-about>
-  <app-education></app-education> 
+  <app-education
+  (emit)="receiveSelectedItem($event)"
+  ></app-education> 
   <app-skills></app-skills>
   <app-form-education
     *ngIf="isFormEducation"
     class="app-form"
-    (emit)="receiveSelectedItem($event)"
   ></app-form-education>
   <app-form-skills *ngIf="isFormSkill" class="app-form"></app-form-skills>
 </div>

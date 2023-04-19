@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { ISkills } from 'src/app/interface/ISkills';
-import { PortfolioService } from 'src/app/service/portfolio.service';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css', '../../../bootstrap.min.css'],
+  styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent implements OnInit {
   @Output()
@@ -16,11 +15,10 @@ export class SkillsComponent implements OnInit {
 
   skills: string = 'skills';
 
-  constructor(private infoPortfolio: PortfolioService, private stateService:EstadosUIService, private route:ActivatedRoute) {
+  constructor( private stateService:EstadosUIService, private route:ActivatedRoute) {
   
   }
   ngOnInit():void{
-    this.habilidades = this.infoPortfolio.getSkills();
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
@@ -29,6 +27,9 @@ export class SkillsComponent implements OnInit {
 
   makeFormVisible(event: boolean): void {
     this.stateService.changeStateFormSkill(event)
+  }
+  getSkill() {
+    
   }
   
   editarSkill(event: any) {

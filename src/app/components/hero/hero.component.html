@@ -14,7 +14,7 @@
   <div class="row perfil container">
     <div class="col d-flex flex-column align-items-center gap-2 position-relative">
       <img src="{{ fotoperfil }}" alt="foto de perfil" class="rounded-circle" />
-      <app-button-edit *ngIf="isInDashboard"></app-button-edit>
+      <app-button-edit *ngIf="isInDashboard" (click)="toggleForm(true)" ></app-button-edit>
     </div>
 
     <div class="col">
@@ -22,4 +22,35 @@
       <p>Web Developer Jr.</p>
     </div>
   </div>
+  <div *ngIf="isFormActive" class="container-form form-about">
+        [formControl]="formForPhoto"
+    <form class="card p-5 rounded" (submit)="submitProfile($event)"
+         [formGroup]="formForPhoto"
+       >
+      <span class="material-icons" (click)="toggleForm(false)">close</span>
+      <h3 class="card-title">Elige tu nombre, tu imagen y tu profesión</h3>
+      <input name="name" id="name" formControlName="name" type="text" placeholder="Ingresa tu nombre a mostrar" class="form-control mt-4"/>
+      <input name="job" id="job" formControlName="job" type="text" placeholder="Ingresa a qué te dedicas" class="form-control mt-4"/>
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          class="form-control mt-4"
+          name="image"
+          id="image"
+          formControlName="image"
+          (change)="handleImage($event)"
+        />
+      <div *ngIf="newImageUrl.length > 1" class="mt-4 w-25 position-relative card">
+        <img [src]="newImageUrl" class="card-img" alt="imagen perfil nueva" />
+        <app-button-delete (click)="onDeleteImg()"
+          class="card-img-top bg-white"
+        ></app-button-delete>
+      </div>
+      <button
+        class="btn btn-primary mt-4 w-25 m-auto"
+      >
+        Aceptar
+      </button>
+    </form>
+</div>
 </div>

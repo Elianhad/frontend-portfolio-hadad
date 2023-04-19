@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css', '../../../bootstrap.min.css'],
+  styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
   @Input() isInDashboard: boolean = false;

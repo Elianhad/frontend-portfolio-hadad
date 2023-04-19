@@ -9,7 +9,8 @@ export class UploadImageServiceService {
   imageUrlRef!: String;
   progress: number | null = null;
   loading: boolean = false;
-  constructor() {}
+  constructor() { }
+  
   async updaloadImg(fileName: string | undefined, file: File) {
     const storageRef = ref(Storage, fileName);
     return (await uploadBytesResumable(storageRef, file))

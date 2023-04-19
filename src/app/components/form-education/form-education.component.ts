@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
-import { PortfolioService } from 'src/app/service/portfolio.service';
 import { IEducation } from 'src/app/interface/IEducation';
+import { EducServiceService } from 'src/app/service/educ-service.service';
 
 @Component({
   selector: 'app-form-education',
   templateUrl: './form-education.component.html',
-  styleUrls: ['./form-education.component.css', '../../../bootstrap.min.css'],
+  styleUrls: ['./form-education.component.css'],
 })
 export class FormEducationComponent implements OnInit {
   formEducation: FormGroup = new FormGroup({});
@@ -15,12 +15,12 @@ export class FormEducationComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     private stateService: EstadosUIService,
-    private porfolioService: PortfolioService
+    private educServ:EducServiceService
   ) {}
 
   ngOnInit(): void {
     this.formEducation = this.formbuilder.group({
-      nameEd: [
+      name: [
         '',
         [
           Validators.compose([
@@ -50,9 +50,12 @@ export class FormEducationComponent implements OnInit {
       name: this.formEducation.value.name,
       campus: this.formEducation.value.campus,
       date: this.formEducation.value.date,
-      id: Math.random(),
     };
-    this.porfolioService.postEducation(newEducation)
+    console.log(newEducation);
+    
+    this.educServ.addEduc(newEducation)
+    this.formEducation.reset()
+    this.stateService.changeStateFormEd(false)
   }
   makeFormInvisible() {
     this.stateService.changeStateFormEd(false);
