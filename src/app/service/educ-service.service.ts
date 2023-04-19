@@ -28,7 +28,8 @@ export class EducServiceService {
       .delete(this.url_api + `/del/${id}`)
       .pipe(catchError(this.handleError<any>('delEduc', [])))
       .subscribe((res) => {
-        this.uiService.showToast('Ha sido eliminado correctamente');
+        console.log(res)
+        // TODO: showToast
       });
   }
   public editEduc(education: IEducation) {
@@ -45,7 +46,7 @@ export class EducServiceService {
       // send error to infraestructure
       this.uiService.showToast(error.error);
 
-      console.log(`${operation} falló: ${error.error} `);
+      console.log(`${operation} falló:`, error);
       //let the app keep running  an empty result
       return of(result as T);
     };

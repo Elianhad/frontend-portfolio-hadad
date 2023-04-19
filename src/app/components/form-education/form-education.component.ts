@@ -57,9 +57,13 @@ export class FormEducationComponent implements OnInit {
       campus: this.formEducation.value.campus,
       date: this.formEducation.value.date,
     };
-    console.log(newEducation);
-    if (this.elementToEdit.name.length > 1) {
-      this.educServ.editEduc( newEducation )
+    // si hay un elemento para editar cambia a put
+    if (this.elementToEdit !== undefined){
+      newEducation.id = this.elementToEdit.id
+      this.educServ.editEduc(newEducation)
+      this.formEducation.reset()
+      this.stateService.changeStateFormEd(false)
+      return
     }
     this.educServ.addEduc(newEducation)
     this.formEducation.reset()

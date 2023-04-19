@@ -30,8 +30,8 @@
           </div>
         </div>
         <div class="botones-acciones" *ngIf="isUrlDashboard">
-          <app-button-edit></app-button-edit>
-          <app-button-delete></app-button-delete>
+          <app-button-edit (click)="onEdit(habilidad)" ></app-button-edit>
+          <app-button-delete (click)="onDelete(habilidad.id)"></app-button-delete>
         </div>
       </div>
     </div>

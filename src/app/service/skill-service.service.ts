@@ -24,12 +24,16 @@ export class SkillServiceService {
         this.uiService.showToast("Se ha agregado correctamente")
       });
   }
-  public delSkill(id: number) {
+  public delSkill(id: number | undefined) {
+    if (id === undefined) {
+      this.uiService.showToast("Hubo un error")
+      return
+    }
     this.http
       .delete(this.url_api + `/del/${id}`)
       .pipe(catchError(this.handleError<any>('delSkill', [])))
       .subscribe((res) => {
-        this.uiService.showToast('Ha sido eliminado correctamente');
+        console.log('Desde subscribe del', res);
       });
   }
   public editskill(skill: ISkills) {
@@ -46,7 +50,7 @@ export class SkillServiceService {
       // send error to infraestructure
       this.uiService.showToast(error.error);
 
-      console.log(`${operation} falló: ${error.error} `);
+      console.log(`${operation} falló:`, error);
       //let the app keep running  an empty result
       return of(result as T);
     };

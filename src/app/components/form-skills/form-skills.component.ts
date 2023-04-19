@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 import { ISkills } from 'src/app/interface/ISkills';
 import { SkillServiceService } from 'src/app/service/skill-service.service';
-// TODO: add spinner uploading image
 @Component({
   selector: 'app-form-skills',
   templateUrl: './form-skills.component.html',
@@ -13,6 +12,8 @@ import { SkillServiceService } from 'src/app/service/skill-service.service';
 })
 export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup;
+  @Input()
+  elementToEdit!:ISkills
 
   imgfile!: File;
   uploadTask!: UploadTaskSnapshot;
@@ -43,7 +44,15 @@ export class FormSkillsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.elementToEdit) {
+      this.formSkills.patchValue({
+        nameSkill: this.elementToEdit.nameSkill,
+        imagen: this.elementToEdit.imageSkill,
+        percentage: this.elementToEdit.percentageSkill
+      })
+    }
+  }
   async onSubmitSkillForm($event: SubmitEvent) {
     //TODO: submit form
     $event.preventDefault;
@@ -53,8 +62,15 @@ export class FormSkillsComponent implements OnInit {
       imageSkill: this.filePathImg,
       percentageSkill: this.formSkills.value.percentage,
     };
+    if (this.elementToEdit) {
+      newSkills.id = this.elementToEdit.id
+      this.skillServ.editskill(newSkills)
+      this.makeFormInVisible()
+     
+      return
+    }
     this.skillServ.addSkill(newSkills);
-    this.formSkills.reset();
+    this.makeFormInVisible()
   }
   get nameSkill() {
     return this.formSkills.get('nameSkill');
@@ -98,5 +114,10 @@ export class FormSkillsComponent implements OnInit {
   }
   makeFormInVisible() {
     this.stateService.changeStateFormSkill(false);
+    this.formSkills.reset()
+    this.elementToEdit.id = undefined
+    this.elementToEdit.imageSkill = ''
+    this.elementToEdit.nameSkill = ''
+    this.elementToEdit.percentageSkill= ''
   }
 }

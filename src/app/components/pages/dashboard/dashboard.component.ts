@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEducation } from 'src/app/interface/IEducation';
+import { ISkills } from 'src/app/interface/ISkills';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
   isFormEducation: boolean = false;
   itemEducationSelected!: IEducation
+  itemSkillSelected!:ISkills
   isInDashboard: boolean = true
   
   constructor(private uiState: EstadosUIService) {}
@@ -22,8 +24,10 @@ export class DashboardComponent implements OnInit {
       (state) => (this.isFormSkill = state.visibility)
     );
   }
-  receiveSelectedItem(event:any) {
-    console.log(event);
+  receiveSelectedItemEdu(event:any) {
     this.itemEducationSelected = event;
+  }
+  receiveSelectedItemSkill(event: any) {
+    this.itemSkillSelected = event;
   }
 }

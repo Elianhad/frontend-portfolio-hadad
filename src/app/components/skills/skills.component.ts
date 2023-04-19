@@ -10,7 +10,7 @@ import { SkillServiceService } from 'src/app/service/skill-service.service';
 })
 export class SkillsComponent implements OnInit {
   @Output()
-  emitFormSkill: EventEmitter<boolean> = new EventEmitter();
+  emitSkillToEdit: EventEmitter<ISkills> = new EventEmitter();
   isUrlDashboard:boolean= false
   habilidades!: ISkills[]
   skills: string = 'skills';
@@ -22,6 +22,7 @@ export class SkillsComponent implements OnInit {
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
+    this.getSkill()
 
   }
 
@@ -29,15 +30,15 @@ export class SkillsComponent implements OnInit {
     this.stateService.changeStateFormSkill(event)
   }
   getSkill() {
-    this.skillServ.getAllSkill().subscribe( res => this.habilidades = res )
+    this.skillServ.getAllSkill().subscribe( res => this.habilidades = res)
   }
   
-  editarSkill(event: any) {
-    // TODO: logica para enviar a formulario para edicion
-    console.log(event);
+  onEdit(event: any) {
+    this.emitSkillToEdit.emit(event)
+    this.makeFormVisible(true)
   }
-  eliminarHabilidad(event: any) {
-    console.log(event);
-    // TODO: logica para borrar habilidad desde service
+  onDelete(id:number | undefined) {
+    // logica para borrar habilidad desde service
+    this.skillServ.delSkill(id)
   }
 }
