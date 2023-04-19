@@ -41,7 +41,9 @@ export class EducationComponent implements OnInit {
     })
   }
   editar(seleccion: IEducation) {
+    // emision de la selección al padre dashboard para pasarlo al form ¿opcciones???
     this.educationSelectedEmit.emit(seleccion)
+    // visibilizar el formulario
     this.uiState.changeStateFormEd(true)
   }
   eliminar(event: any) {
