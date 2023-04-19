@@ -4,6 +4,7 @@ import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 import { ISkills } from 'src/app/interface/ISkills';
+import { SkillServiceService } from 'src/app/service/skill-service.service';
 // TODO: add spinner uploading image
 @Component({
   selector: 'app-form-skills',
@@ -14,7 +15,6 @@ export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup;
 
   imgfile!: File;
-
   uploadTask!: UploadTaskSnapshot;
   filePathImg!: string;
   completeUpload: boolean = false;
@@ -24,6 +24,7 @@ export class FormSkillsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private stateService: EstadosUIService,
     private uploadService: UploadImageServiceService,
+    private skillServ: SkillServiceService
   ) {
     this.formSkills = this.formBuilder.group({
       nameSkill: [
@@ -52,6 +53,8 @@ export class FormSkillsComponent implements OnInit {
       imageSkill: this.filePathImg,
       percentageSkill: this.formSkills.value.percentage,
     };
+    this.skillServ.addSkill(newSkills);
+    this.formSkills.reset();
   }
   get nameSkill() {
     return this.formSkills.get('nameSkill');
@@ -74,12 +77,17 @@ export class FormSkillsComponent implements OnInit {
     this.uploadTask.task
       .then((snapshot) => {
         this.isUploading = true;
+        this.stateService.showToast('La imagen se está cargando');
         getDownloadURL(ref).then((path) => (this.filePathImg = path));
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        this.stateService.showToast('Hubo un error de carga');
+      })
       .finally(() => {
         this.completeUpload = true;
         this.isUploading = false;
+        this.stateService.showToast('Imagen cargada correctamente');
       });
   }
   onDeleteImg() {
