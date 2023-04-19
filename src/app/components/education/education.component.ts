@@ -12,7 +12,7 @@ export class EducationComponent implements OnInit {
   education: string = 'education';
   educaciones: IEducation[] | null = null;
   isUrlDashboard: boolean = false;
-  @Output() educationSelectedEmit:EventEmitter<IEducation> = new EventEmitter()
+  @Output() educationSelectedEmit:EventEmitter<IEducation> = new EventEmitter<IEducation>()
 
   constructor(
     // import service of states
@@ -22,16 +22,16 @@ export class EducationComponent implements OnInit {
   ) {
 
   }
-
   ngOnInit(): void {
     // subscribe to the state of visibility of form
-    this.getEducation()
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
+    this.getEducation()
+
   }
 
-  makeFormVisible(): void {
+  makeFormVisibletoToAdd(): void {
     this.uiState.changeStateFormEd(true);
   }
   getEducation() {
@@ -41,7 +41,8 @@ export class EducationComponent implements OnInit {
     })
   }
   editar(seleccion: IEducation) {
-    
+    this.educationSelectedEmit.emit(seleccion)
+    this.uiState.changeStateFormEd(true)
   }
   eliminar(event: any) {
     //  logica de eliminación a traves de service

@@ -16,8 +16,6 @@ export class EducServiceService {
       .pipe(catchError(this.handleError<IEducation[]>('getAllEduc', [])));
   }
   public addEduc(education: IEducation): void {
-    
-    
     this.http
       .post(this.url_api + '/create', education )
       .pipe(catchError(this.handleError<any>('addEduc', [])))
@@ -33,7 +31,8 @@ export class EducServiceService {
         this.uiService.showToast('Ha sido eliminado correctamente');
       });
   }
-  public editEduc(id: number, education:IEducation ) {
+  public editEduc(education: IEducation) {
+    const { id } = education
     this.http.put(this.url_api + `/edit/${id}`, education).pipe(catchError(this.handleError<any>('editEduc', [])))
       .subscribe(res => {
       this.uiService.showToast("Ha sido modificado con éxito")

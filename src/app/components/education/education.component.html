@@ -1,7 +1,7 @@
 <section id="educacion" class="container card mt-2">
   <div class="card-header d-flex justify-content-between">
     <h2>Educación</h2>
-    <app-buttonplus (click)="makeFormVisible()"></app-buttonplus>
+    <app-buttonplus (click)="makeFormVisibletoToAdd()"></app-buttonplus>
   </div>
   <div *ngIf="educaciones?.length; else elseBlock">
     <div class="card-body">

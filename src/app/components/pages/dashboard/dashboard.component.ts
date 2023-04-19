@@ -9,7 +9,7 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
 export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
   isFormEducation: boolean = false;
-  itemEducationSelected: IEducation | null = null;
+  itemEducationSelected!: IEducation
   isInDashboard: boolean = true
   
   constructor(private uiState: EstadosUIService) {}
