@@ -4,7 +4,11 @@
     (submit)="onSubmitEducationForm($event)"
     class="form-control p-4 position-relative"
   >
-    <span class="material-icons" (click)="makeFormInvisible()"> cancel </span>
+  <button class="button-close"  (click)="makeFormInvisible()">
+    <div class="contenedor-button">
+      <img alt="Editar" width="50" height="50" src="../../../assets/icons8-delete.png" /> 
+    </div>      
+  </button>
     <label class="form-label" for="nameEd">Título</label>
     <input
       formControlName="name"
@@ -32,7 +36,6 @@
       class="btn btn-primary text-center text-uppercase mt-2"
       [disabled]="!formEducation.valid"
     >
-
       Aceptar
     </button>
   </form>

@@ -13,7 +13,11 @@
   </div>
   <div *ngIf="isFormActive" class="container-form form-about">
     <form class="card p-5 rounded" (submit)="submitAbout()">
-      <span class="material-icons" (click)="toggleForm(false)">close</span>
+      <button class="button-close"  (click)="toggleForm(false)">
+        <div class="contenedor-button">
+          <img alt="Editar" width="50" height="50" src="../../../assets/icons8-delete.png" /> 
+        </div>      
+      </button>
       <h3 class="card-title">Agrega una descripcion acerca de ti</h3>
       <input
         type="text"

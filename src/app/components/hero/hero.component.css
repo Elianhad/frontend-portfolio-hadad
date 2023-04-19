@@ -39,3 +39,15 @@
     font-size: 1.7rem;
   }
 }
+.contenedor-button:hover {
+  border-radius: 100%;
+  border: 1px dashed blue;
+  margin: 0;
+}
+.button-close {
+  all: unset;
+  padding: 2px;
+  position: absolute;
+  top: -2px;
+  right: 0;
+}

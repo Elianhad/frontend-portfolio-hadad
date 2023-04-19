@@ -1,7 +1,5 @@
-.contenedor-buttonplus {
-  display:grid;
-  align-content: center;
-}
-.contenedor-buttonplus div {
-  align-self: center;
+.contenedor-button:hover {
+  border-radius: 100%;
+  border: 1px dashed blue;
+  margin: 0;
 }

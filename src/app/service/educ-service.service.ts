@@ -21,6 +21,7 @@ export class EducServiceService {
       .pipe(catchError(this.handleError<any>('addEduc', [])))
       .subscribe((res) => {
         console.log(res);
+        this.uiService.showToast('Creado con éxito')
       });
   }
   public delEduc(id: number) {

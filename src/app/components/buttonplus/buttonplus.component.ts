@@ -6,7 +6,6 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
   styleUrls: ['./buttonplus.component.css'],
 })
 export class ButtonplusComponent implements OnInit {
-
   urlName: string | null = null;
 
   constructor(

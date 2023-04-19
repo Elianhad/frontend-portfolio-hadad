@@ -4,7 +4,16 @@
     class="form-control p-4 position-relative"
     [formGroup]="formSkills"
   >
-    <span class="material-icons" (click)="makeFormInVisible()"> cancel </span>
+    <button type="button" class="button-close" (click)="makeFormInVisible()">
+      <div class="contenedor-button">
+        <img
+          alt="Editar"
+          width="50"
+          height="50"
+          src="../../../assets/icons8-delete.png"
+        />
+      </div>
+    </button>
     <div class="mt-4">
       <label class="form-label" for="nameSkill">Habilidad</label>
       <input
@@ -31,14 +40,11 @@
         El campo es obligatorio
       </div>
     </div>
-    <div
-      class="w-25 mt-3 position-relative card"
-      *ngIf="filePathImg"
-    >
-      <img [src]="filePathImg" class="card-img" alt="imagen nueva" />
+    <div class="w-25 mt-3 position-relative card" *ngIf="filePathImg">
+      <img [src]="filePathImg" height="160" class="card-img" alt="imagen nueva" />
       <app-button-delete
         (click)="onDeleteImg()"
-        class="card-img-top bg-white"
+        class="card-img-top"
       ></app-button-delete>
     </div>
     <div class="mt-4">

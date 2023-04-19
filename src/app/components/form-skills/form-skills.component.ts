@@ -115,7 +115,6 @@ export class FormSkillsComponent implements OnInit {
   makeFormInVisible() {
     this.stateService.changeStateFormSkill(false);
     this.formSkills.reset()
-    this.elementToEdit.id = undefined
     this.elementToEdit.imageSkill = ''
     this.elementToEdit.nameSkill = ''
     this.elementToEdit.percentageSkill= ''
