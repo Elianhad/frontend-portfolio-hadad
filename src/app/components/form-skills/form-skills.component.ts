@@ -13,7 +13,11 @@ import { SkillServiceService } from 'src/app/service/skill-service.service';
 export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup;
   @Input()
-  elementToEdit!:ISkills
+  elementToEdit: ISkills = {
+      nameSkill: '',
+      imageSkill: '',
+      percentageSkill: ''
+  }
 
   imgfile!: File;
   uploadTask!: UploadTaskSnapshot;
@@ -45,7 +49,7 @@ export class FormSkillsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.elementToEdit) {
+    if (this.elementToEdit?.nameSkill.length > 1) {
       this.formSkills.patchValue({
         nameSkill: this.elementToEdit.nameSkill,
         imagen: this.elementToEdit.imageSkill,
@@ -62,11 +66,11 @@ export class FormSkillsComponent implements OnInit {
       imageSkill: this.filePathImg,
       percentageSkill: this.formSkills.value.percentage,
     };
-    if (this.elementToEdit) {
+    if (this.elementToEdit?.nameSkill.length > 1) {
       newSkills.id = this.elementToEdit.id
+      newSkills.imageSkill= newSkills.imageSkill ? newSkills.imageSkill : this.elementToEdit.imageSkill 
       this.skillServ.editskill(newSkills)
       this.makeFormInVisible()
-     
       return
     }
     this.skillServ.addSkill(newSkills);

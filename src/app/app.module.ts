@@ -25,6 +25,7 @@ import { ButtonEditComponent } from './components/button-edit/button-edit.compon
 import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { InterceptorRequestService } from './service/interceptor-request.service';
+import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { InterceptorRequestService } from './service/interceptor-request.service
     ButtonEditComponent,
     ButtonDeleteComponent,
     ToastComponent,
+    SocialmediaComponent,
   ],
   imports: [
     BrowserModule,
