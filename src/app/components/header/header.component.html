@@ -5,7 +5,10 @@
     <div
       class="d-flex flex-row p-2 justify-content-center justify-content-md-between"
     >
-      <a routerLink="/" class="text-white m-0 text-center align-self-center arg-prog">
+      <a
+        routerLink="/"
+        class="text-white m-0 text-center align-self-center arg-prog"
+      >
         Argentina Programa
       </a>
       <img
@@ -30,7 +33,7 @@
       <nav
         class="d-flex flex-column mt-4 mt-lg-0 flex-lg-row gap-7 align-items-center nav"
       >
-      <a routerLink="/" class="text-decoration-none text-white link-hover"
+        <a routerLink="/" class="text-decoration-none text-white link-hover"
           >Inicio</a
         >
         <a href="#sobre-mi" class="text-decoration-none text-white link-hover"
@@ -42,11 +45,20 @@
         <a href="#contacto" class="text-decoration-none text-white link-hover"
           >Contacto</a
         >
-        <a
-          routerLink="/login"
-          class="text-decoration-none text-white navbar-text btn btn-primary mt-2 mt-lg-0 mx-lg-4"
-          >Login</a
+
+        <button
+          class="text-white navbar-text btn btn-primary mt-2 mt-lg-0 mx-lg-4"
+          *ngIf="!isLogin"
         >
+          <a routerLink="/login" class="text-decoration-none">Iniciar Sesión</a>
+        </button>
+        <button
+        class="text-white navbar-text btn btn-secondary mt-2 mt-lg-0 mx-lg-4"
+          *ngIf="isLogin"
+          (click)="onClickCloseSession()"
+        >
+          Cerrar sesión
+        </button>
       </nav>
     </div>
     <!--fin de navegacion-->
