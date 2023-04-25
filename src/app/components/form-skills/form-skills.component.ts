@@ -12,6 +12,8 @@ import { SkillServiceService } from 'src/app/service/skill-service.service';
 })
 export class FormSkillsComponent implements OnInit {
   formSkills: FormGroup;
+  deleteIcon:string = "../../../assets/icons8-delete.png"
+  NO_IMAGE:string = "../../../assets/img/no-image.webp"
   @Input()
   elementToEdit: ISkills = {
       nameSkill: '',
@@ -55,6 +57,7 @@ export class FormSkillsComponent implements OnInit {
         imagen: this.elementToEdit.imageSkill,
         percentage: this.elementToEdit.percentageSkill
       })
+
     }
   }
   async onSubmitSkillForm($event: SubmitEvent) {

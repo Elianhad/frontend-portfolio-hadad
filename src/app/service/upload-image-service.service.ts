@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '../../firebase';
+import { storage } from '../../firebase';
 import { deleteObject, ref, StorageReference, uploadBytesResumable,  } from 'firebase/storage';
 
 @Injectable({
@@ -9,11 +9,12 @@ export class UploadImageServiceService {
   imageUrlRef!: String;
   progress: number | null = null;
   loading: boolean = false;
+  storageReference!:StorageReference
   constructor() { }
   
   async updaloadImg(fileName: string | undefined, file: File) {
-    const storageRef = ref(Storage, fileName);
-    return (await uploadBytesResumable(storageRef, file))
+    const storageRefImg = ref(storage, `images/${fileName}`)
+    return (await uploadBytesResumable(storageRefImg, file))
   }
   deleteImg(ref:StorageReference){
     return deleteObject(ref)

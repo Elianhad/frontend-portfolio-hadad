@@ -13,19 +13,19 @@
 
   <div class="row perfil container">
     <div class="col d-flex flex-column align-items-center gap-2 position-relative">
-      <img src="{{ fotoperfil }}" alt="foto de perfil" class="rounded-circle" />
+      <img src="{{ profile.image }}" alt="foto de perfil" class="rounded-circle" />
       <app-button-edit *ngIf="isInDashboard" (click)="toggleForm(true)" ></app-button-edit>
     </div>
 
     <div class="col">
-      <h2 class="mt-4" id="firma">Elian Emir Hadad</h2>
-      <p>Web Developer Jr.</p>
+      <h2 class="mt-4" id="firma">{{profile.name}}</h2>
+      <p>{{profile.profession}}</p>
     </div>
   </div>
   <div *ngIf="isFormActive" class="container-form form-about">
-        [formControl]="formForPhoto"
+        [formControl]="formProfile"
     <form class="card p-5 rounded" (submit)="submitProfile($event)"
-         [formGroup]="formForPhoto"
+         [formGroup]="formProfile"
        >
        <button class="button-close"  (click)="toggleForm(false)">
         <div class="contenedor-button">
@@ -44,12 +44,13 @@
           formControlName="image"
           (change)="handleImage($event)"
         />
-      <div *ngIf="newImageUrl.length > 1" class="mt-4 w-25 position-relative card">
-        <img [src]="newImageUrl" class="card-img" alt="imagen perfil nueva" />
-        <app-button-delete (click)="onDeleteImg()"
-          class="card-img-top bg-white"
-        ></app-button-delete>
-      </div>
+        <div class="w-25 mt-3 position-relative card" *ngIf="filePathImg">
+          <img [src]="filePathImg" height="160" class="card-img" alt="imagen nueva" />
+          <app-button-delete
+            (click)="onDeleteImg()"
+            class="card-img-top"
+          ></app-button-delete>
+        </div>
       <button
         class="btn btn-primary mt-4 w-25 m-auto"
       >

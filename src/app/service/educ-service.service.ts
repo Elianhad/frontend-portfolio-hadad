@@ -18,7 +18,7 @@ export class EducServiceService {
   public addEduc(education: IEducation): void {
     this.http
       .post(this.url_api + '/create', education )
-      .pipe(catchError(this.handleError<any>('addEduc', [])))
+      .pipe(catchError(this.handleError<any>('addEduc')))
       .subscribe((res) => {
         console.log(res);
         this.uiService.showToast('Creado con éxito')
@@ -27,7 +27,7 @@ export class EducServiceService {
   public delEduc(id: number) {
     this.http
       .delete(this.url_api + `/del/${id}`)
-      .pipe(catchError(this.handleError<any>('delEduc', [])))
+      .pipe(catchError(this.handleError<any>('delEduc')))
       .subscribe((res) => {
         console.log(res)
         // TODO: showToast
@@ -35,7 +35,7 @@ export class EducServiceService {
   }
   public editEduc(education: IEducation) {
     const { id } = education
-    this.http.put(this.url_api + `/edit/${id}`, education).pipe(catchError(this.handleError<any>('editEduc', [])))
+    this.http.put(this.url_api + `/edit/${id}`, education).pipe(catchError(this.handleError<any>('editEduc')))
       .subscribe(res => {
       this.uiService.showToast("Ha sido modificado con éxito")
     })

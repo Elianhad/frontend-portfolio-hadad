@@ -44,7 +44,7 @@ export class FormEducationComponent implements OnInit {
       ],
       date: [Date, Validators.required],
     });
-    if (this.elementToEdit) {
+    if (this.elementToEdit !== undefined) {
       this.seteducationToEdit(this.elementToEdit)
     }
   }
