@@ -64,8 +64,13 @@ export class HeroComponent implements OnInit {
   }
   private getProfile() {
     this.profileService.getProfile().subscribe((res:any) => {
-      const respuesta = res[1].profile
-      console.log(respuesta)
+      const respuesta = res[0]?.profile
+      console.log(respuesta);
+      
+      if (respuesta === undefined) {
+        this.checkProfileDataAndPutDefault(this.profileDefault)
+        return
+      } 
       this.checkProfileDataAndPutDefault(respuesta)
     })
   }

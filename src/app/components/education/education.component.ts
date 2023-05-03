@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { IEducation } from 'src/app/interface/IEducation';
 import { EducServiceService } from 'src/app/service/educ-service.service';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
@@ -12,7 +12,8 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
 })
 export class EducationComponent implements OnInit {
   education: string = 'education';
-  educaciones$:Observable<any> = new Observable()
+  educaciones$: Observable<any> = new Observable()
+  subject$ = new Subject<void>();
   isUrlDashboard: boolean = false;
   @Output() educationSelectedEmit:EventEmitter<IEducation> = new EventEmitter<IEducation>()
 
@@ -30,8 +31,10 @@ export class EducationComponent implements OnInit {
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
-    this.getEducation()
-    this.cdr.markForCheck()
+    this.subject$.subscribe({
+      next: () => this.getEducation()
+    })
+    this.cdr.detectChanges();
   }
 
   makeFormVisibletoToAdd(): void {
@@ -39,15 +42,20 @@ export class EducationComponent implements OnInit {
   }
   getEducation() {
     this.educaciones$ = this.edService.getAllEduc()
+    this.cdr.markForCheck()
   }
   editar(seleccion: IEducation) {
     // emision de la selección al padre dashboard para pasarlo al form ¿opcciones???
     this.educationSelectedEmit.emit(seleccion)
+    // avisar al componente que traiga nueva peticion del servidor para re-renderizar
+    this.subject$.next()
     // visibilizar el formulario
     this.uiState.changeStateFormEd(true)
+    
   }
   eliminar(event: any) {
     //  logica de eliminación a traves de service
     this.edService.delEduc(event)
+    this.subject$.next()
   }
 }

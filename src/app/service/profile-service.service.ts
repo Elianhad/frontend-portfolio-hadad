@@ -17,7 +17,7 @@ export class ProfileServiceService {
   }
   public putProfile(profile: IProfile) {
     const { id } = profile
-    return this.http.put( this.API_URL + `profile/editar/${id}`, profile).subscribe(res => console.log(res))
+    return this.http.put(this.API_URL + `profile/editar/${id}`, profile).pipe(catchError(this.handleError('putProfile', [])))
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

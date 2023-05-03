@@ -13,7 +13,6 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
-import { ProjectsComponent } from './components/projects/projects.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ButtonplusComponent } from './components/buttonplus/buttonplus.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
@@ -26,6 +25,9 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
 import { ToastComponent } from './components/toast/toast.component';
 import { InterceptorRequestService } from './service/interceptor-request.service';
 import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
+import { FormProjectsComponent } from './components/form-projects/form-projects.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,6 @@ import { SocialmediaComponent } from './components/socialmedia/socialmedia.compo
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    ProjectsComponent,
     ContactComponent,
     ButtonplusComponent,
     FormLoginComponent,
@@ -50,6 +51,8 @@ import { SocialmediaComponent } from './components/socialmedia/socialmedia.compo
     ButtonDeleteComponent,
     ToastComponent,
     SocialmediaComponent,
+    FormProjectsComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,

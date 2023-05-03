@@ -27,6 +27,5 @@ export class HeaderComponent implements OnInit {
   onClickCloseSession() {
     this.auth.logout()
     this.router.navigate(['/home'])
-
   }
 }

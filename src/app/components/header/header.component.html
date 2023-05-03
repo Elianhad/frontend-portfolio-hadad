@@ -48,17 +48,18 @@
 
         <button
           class="text-white navbar-text btn btn-primary mt-2 mt-lg-0 mx-lg-4"
-          *ngIf="!isLogin"
+          *ngIf="isLogin; else elseComponent"
         >
           <a routerLink="/login" class="text-decoration-none">Iniciar Sesión</a>
         </button>
-        <button
-        class="text-white navbar-text btn btn-secondary mt-2 mt-lg-0 mx-lg-4"
-          *ngIf="isLogin"
+        <ng-template #elseComponent>
+          <button
+          class="text-white navbar-text btn btn-secondary mt-2 mt-lg-0 mx-lg-4"
           (click)="onClickCloseSession()"
-        >
-          Cerrar sesión
-        </button>
+          >
+            Cerrar sesión
+          </button>
+        </ng-template>
       </nav>
     </div>
     <!--fin de navegacion-->
