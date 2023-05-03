@@ -27,6 +27,7 @@ import { InterceptorRequestService } from './service/interceptor-request.service
 import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
 import { FormProjectsComponent } from './components/form-projects/form-projects.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ExperienceComponent } from './components/experience/experience.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
     SocialmediaComponent,
     FormProjectsComponent,
     ProjectListComponent,
+    ExperienceComponent,
   ],
   imports: [
     BrowserModule,

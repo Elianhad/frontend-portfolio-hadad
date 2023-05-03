@@ -1,6 +1,6 @@
 export interface IEducation {
   name:string,
   campus:string,
-  date:Date,
+  date?:Date,
   id?:number
 }
