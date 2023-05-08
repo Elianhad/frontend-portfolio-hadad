@@ -5,6 +5,7 @@ import {
   Output,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Input
 } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -19,6 +20,7 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
 })
 export class EducationComponent implements OnInit {
   education: string = 'education';
+  @Input()
   educaciones: IEducation[] = [{
     name: '',
     campus: '',
@@ -27,7 +29,7 @@ export class EducationComponent implements OnInit {
   isUrlDashboard: boolean = false;
   @Output() educationSelectedEmit: EventEmitter<IEducation> =
     new EventEmitter<IEducation>();
-
+ 
   constructor(
     // import service of states
     private edService: EducServiceService,
@@ -40,7 +42,7 @@ export class EducationComponent implements OnInit {
     this.route.url.subscribe((value: UrlSegment[]) => {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
-    this.cdr.detectChanges();
+    this.getEducation()
   }
 
   makeFormVisibletoToAdd(): void {
@@ -49,6 +51,7 @@ export class EducationComponent implements OnInit {
   getEducation() {
     this.edService.getAllEduc().subscribe((res) => {
       this.educaciones = res;
+      this.subject$.next() // emite el evento para que el cambio sea detectado
     });
   }
   editar(seleccion: IEducation) {

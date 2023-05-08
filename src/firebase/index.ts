@@ -2,16 +2,17 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getStorage } from 'firebase/storage';
+import { environment } from 'src/environments/environments';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyCpXiPnWdUwMsWaxEb-9-L8jI6nIsywk6I',
-  authDomain: 'portfolioangular-eeh.firebaseapp.com',
-  projectId: 'portfolioangular-eeh',
-  storageBucket: 'portfolioangular-eeh.appspot.com',
-  messagingSenderId: '529996034143',
-  appId: '1:529996034143:web:4ae42d70e11a8aaeeaebea',
-  measurementId: 'G-ZJZPZ6KEEN',
+  apiKey: environment.apiKey,
+  authDomain: environment.authDomain,
+  projectId: environment.projectId,
+  storageBucket: environment.storageBucket,
+  messagingSenderId: environment.messagingSenderId,
+  appId: environment.appId,
+  measurementId: environment.measurementId,
 };
 
 // Initialize Firebase

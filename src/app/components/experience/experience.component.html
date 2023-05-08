@@ -1,12 +1,19 @@
-<section id="experience" class="card mt-4">
-  <h3 class="card-header"></h3>
-  <div class="card-body">
+<section id="experience" class="container card mt-2">
+  <h3 class="card-header">Experiencia Laboral</h3>
+  <div class="card-body" *ngFor="let experience of experiences" >
     <div>
-      <h4>Titulo de experiencia</h4>
+      <h4>{{experience.titulo}}</h4>
       <div>
-        <p>Descripcion del puesto de trabajo</p>
-        <small>Fecha</small>
+        <p>{{experience.descripcion}}</p>
+        <small>{{experience.fecha}}</small>
+      </div>
+      <div class="botones-acciones" *ngIf="isUrlDashboard" >
+        <app-button-edit (click)="editar(experience)" ></app-button-edit>
+        <app-button-delete (click)="eliminar(experience.id)" ></app-button-delete>
       </div>
     </div>
   </div>
 </section>
+<app-form-experience [isFormActive]="isFormActive" ></app-form-experience>
+
+

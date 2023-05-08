@@ -25,7 +25,6 @@ export class FormSkillsComponent implements OnInit {
   uploadTask!: UploadTaskSnapshot;
   filePathImg!: string;
   completeUpload: boolean = false;
-  isUploading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -99,7 +98,6 @@ export class FormSkillsComponent implements OnInit {
     const ref = this.uploadTask.ref;
     this.uploadTask.task
       .then((snapshot) => {
-        this.isUploading = true;
         this.stateService.showToast('La imagen se está cargando');
         getDownloadURL(ref).then((path) => (this.filePathImg = path));
       })
@@ -109,7 +107,6 @@ export class FormSkillsComponent implements OnInit {
       })
       .finally(() => {
         this.completeUpload = true;
-        this.isUploading = false;
         this.stateService.showToast('Imagen cargada correctamente');
       });
   }

@@ -48,6 +48,7 @@ h3 {
   position: fixed;
   top: 0;
   padding-top: 10rem;
+  z-index: 2;
 }
 @media (min-width: 768px) {
   .container-form > form {

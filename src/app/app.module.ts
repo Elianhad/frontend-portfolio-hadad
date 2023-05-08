@@ -25,9 +25,10 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
 import { ToastComponent } from './components/toast/toast.component';
 import { InterceptorRequestService } from './service/interceptor-request.service';
 import { SocialmediaComponent } from './components/socialmedia/socialmedia.component';
-import { FormProjectsComponent } from './components/form-projects/form-projects.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ExperienceComponent } from './components/experience/experience.component';
+import { FormExperienceComponent } from './components/form-experience/form-experience.component';
+import { FormProjectComponent } from './components/form-project/form-project.component';
 
 
 @NgModule({
@@ -52,9 +53,10 @@ import { ExperienceComponent } from './components/experience/experience.componen
     ButtonDeleteComponent,
     ToastComponent,
     SocialmediaComponent,
-    FormProjectsComponent,
     ProjectListComponent,
     ExperienceComponent,
+    FormExperienceComponent,
+    FormProjectComponent,
   ],
   imports: [
     BrowserModule,
