@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  api_url_base: "http://localhost:8080/",
+  api_url_base: "https://spring-boot-backend-yoprogramo-hadad.onrender.com/",
   apiKey: 'AIzaSyCpXiPnWdUwMsWaxEb-9-L8jI6nIsywk6I',
   authDomain: 'portfolioangular-eeh.firebaseapp.com',
   projectId: 'portfolioangular-eeh',

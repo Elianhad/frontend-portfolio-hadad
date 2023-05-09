@@ -11,37 +11,34 @@ import { Subject } from 'rxjs';
 export class AboutComponent implements OnInit {
   @Input() isInDashboard: boolean = false;
   isFormActive: boolean = false;
-  aboutText: String = 'Agrega una descripción. Has saber por qué deben contratarte.'
-  profile!:IProfile
-  about: FormControl = new FormControl(
-    '',
-  );
+  aboutText: String =
+    'Agrega una descripción. Has saber por qué deben contratarte.';
+  profile!: IProfile;
+  about: string = '';
   subject$ = new Subject();
-  constructor(private profileService: ProfileServiceService) { }
+  constructor(private profileService: ProfileServiceService) {}
   ngOnInit() {
     this.subject$.subscribe({
-      next:() => this.getProfile()
-    })
-    
+      next: () => this.getProfile(),
+    });
   }
   getProfile() {
-    return this.profileService.getProfile().subscribe((res:any) => {
-      const respuesta = res[0]?.profile
-      this.profile = respuesta
+    return this.profileService.getProfile().subscribe((res: any) => {
+      const respuesta = res[0]?.profile;
+      this.profile = respuesta;
       console.log(respuesta.about);
       if (respuesta.about) {
-        this.aboutText = respuesta
+        this.aboutText = respuesta;
       }
-    })
+    });
   }
   toggleForm(value: boolean) {
     this.isFormActive = value;
   }
-  submitAbout($event: any) {
-    console.log($event.target.value)
-    //this.profile.about = $event.target.value
-    //this.profileService.putProfile(this.profile);
-    this.toggleForm(false)
-    this.about.reset()
+  submitAbout() {
+    this.profile.about = this.about;
+    this.profileService.putProfile(this.profile);
+    this.toggleForm(false);
+    this.about = '';
   }
 }

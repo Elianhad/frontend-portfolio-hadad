@@ -10,7 +10,7 @@
    {{aboutText}}
   </div>
   <div *ngIf="isFormActive" class="container-form form-about">
-    <form class="card p-5 rounded" (submit)="submitAbout($event)">
+    <div class="card p-5 rounded" >
       <button class="button-close"  (click)="toggleForm(false)">
         <div class="contenedor-button">
           <img alt="cerrar" width="50" height="50" src="../../../assets/icons8-delete.png" /> 
@@ -21,15 +21,17 @@
         type="text"
         placeholder="Soy una persona proactiva..."
         class="form-control"
-        [formControl]="about"
+        [(ngModel)]="about"
         required
         minlength="50"
       />
       <button
         class="btn btn-primary mt-4 w-25 m-auto"
+        ((click))="submitAbout()"
+        type="button"
       >
         Aceptar
       </button>
-    </form>
+    </div>
   </div>
 </section>

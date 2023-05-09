@@ -37,4 +37,7 @@ export class ExperienceComponent implements OnInit {
   eliminar(id:number | undefined) {
     // eliminar 
   }
+  makeFormVisibletoToAdd() {
+    this.isFormActive = true
+  }
 }
