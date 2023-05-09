@@ -1,0 +1,40 @@
+<section class="container card mt-2">
+  <div class="card-header d-flex justify-content-between">
+    <h2>Habilidades</h2>
+    <app-buttonplus (click)="makeFormVisible(true)"></app-buttonplus>
+  </div>
+
+  <div *ngIf="habilidades?.length; else elseBlock">
+      <div id="skills" class="contenedor-grid">
+      <div
+        class="elemento-grid card efecto-glass"
+        *ngFor="let habilidad of habilidades"
+      >
+        <img
+          src="{{ habilidad.imageSkill }}"
+          alt="logo {{ habilidad.nameSkill }}"
+          class="card-img-top"
+        />
+        <h4>{{ habilidad.nameSkill }}</h4>
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ariaValueNow]="habilidad.percentageSkill"
+            [style.width.%]="habilidad.percentageSkill"
+          >
+        
+            {{ habilidad.percentageSkill }}
+          </div>
+        </div>
+        <div class="botones-acciones" *ngIf="isUrlDashboard">
+          <app-button-edit (click)="onEdit(habilidad)" ></app-button-edit>
+          <app-button-delete (click)="onDelete(habilidad.id)"></app-button-delete>
+        </div>
+      </div>
+    </div>
+  </div>
+    <ng-template #elseBlock ><p class="heading">No hay habilidades cargadas</p></ng-template>
+</section>

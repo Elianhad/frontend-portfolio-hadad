@@ -1,0 +1,13 @@
+.notificacion {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;  
+  background-color: gray;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 1rem;
+  border: 1px solid white;
+}

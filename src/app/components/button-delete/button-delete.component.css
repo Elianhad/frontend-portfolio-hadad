@@ -1,0 +1,11 @@
+.contenedor-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+}
+.contenedor-button:hover {
+  border: 1px dashed blue;
+  margin: 0;
+  border-radius: 5px;
+}

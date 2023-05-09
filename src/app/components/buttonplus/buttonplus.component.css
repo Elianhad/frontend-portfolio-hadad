@@ -1,0 +1,5 @@
+.contenedor-button:hover {
+  border-radius: 100%;
+  border: 1px dashed blue;
+  margin: 0;
+}

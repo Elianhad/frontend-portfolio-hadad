@@ -1,0 +1,61 @@
+<div class="bg-dark w-100 hero position-relative">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 320"
+    class="position-absolute waves w-100"
+  >
+    <path
+      fill="#0d6efd"
+      fill-opacity="1"
+      d="M0,96L48,90.7C96,85,192,75,288,69.3C384,64,480,64,576,74.7C672,85,768,107,864,128C960,149,1056,171,1152,202.7C1248,235,1344,277,1392,298.7L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+    ></path>
+  </svg>
+
+  <div class="row perfil container">
+    <div class="col d-flex flex-column align-items-center gap-2 position-relative">
+      <img src="{{ profile.image }}" alt="foto de perfil" class="rounded-circle" />
+      <app-button-edit *ngIf="isInDashboard" (click)="toggleForm(true)" ></app-button-edit>
+    </div>
+
+    <div class="col">
+      <h2 class="mt-4" id="firma">{{profile.name}}</h2>
+      <p>{{profile.profession}}</p>
+    </div>
+  </div>
+  <div *ngIf="isFormActive" class="container-form form-about">
+        [formControl]="formProfile"
+    <form class="card p-5 rounded" (submit)="submitProfile($event)"
+         [formGroup]="formProfile"
+       >
+       <button class="button-close"  (click)="toggleForm(false)">
+        <div class="contenedor-button">
+          <img alt="Editar" width="50" height="50" src="../../../assets/icons8-delete.png" /> 
+        </div>      
+      </button>
+      <h3 class="card-title">Elige tu nombre, tu imagen y tu profesión</h3>
+      <input name="name" id="name" formControlName="name" type="text" placeholder="Ingresa tu nombre a mostrar" class="form-control mt-4"/>
+      <input name="job" id="job" formControlName="job" type="text" placeholder="Ingresa a qué te dedicas" class="form-control mt-4"/>
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          class="form-control mt-4"
+          name="image"
+          id="image"
+          formControlName="image"
+          (change)="handleImage($event)"
+        />
+        <div class="w-25 mt-3 position-relative card" *ngIf="filePathImg">
+          <img [src]="filePathImg" height="160" class="card-img" alt="imagen nueva" />
+          <app-button-delete
+            (click)="onDeleteImg()"
+            class="card-img-top"
+          ></app-button-delete>
+        </div>
+      <button
+        class="btn btn-primary mt-4 w-25 m-auto"
+      >
+        Aceptar
+      </button>
+    </form>
+</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container-form">
+  <form
+    [formGroup]="formEducation"
+    (submit)="onSubmitEducationForm($event)"
+    class="form-control p-4 position-relative"
+  >
+  <button class="btn btn-close"  (click)="makeFormInvisible()">
+  </button>
+    <label class="form-label" for="nameEd">Título</label>
+    <input
+      formControlName="name"
+      type="text"
+      class="form-control"
+      id="name"
+    />
+    <label class="form-label" for="campus">Institución</label>
+    <input
+      formControlName="campus"
+      type="text"
+      class="form-control"
+      id="campus"
+    />
+    <label class="form-label" for="fecha">Fecha</label>
+    <input
+      formControlName="date"
+      type="date"
+      class="form-control"
+      id="fecha"
+    />
+
+    <button
+      type="submit"
+      class="btn btn-primary text-center text-uppercase mt-2"
+      [disabled]="!formEducation.valid"
+    >
+      Aceptar
+    </button>
+  </form>
+</div>

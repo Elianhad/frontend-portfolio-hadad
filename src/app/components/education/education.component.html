@@ -1,0 +1,32 @@
+<section id="educacion" class="container card mt-2">
+  <div class="card-header d-flex justify-content-between">
+    <h2>Educación</h2>
+    <app-buttonplus (click)="makeFormVisibletoToAdd()"></app-buttonplus>
+  </div>
+  <div *ngIf="educaciones[0].name.length; else elseBlock">
+    <div class="card-body">
+      <ul>
+        <div *ngFor="let educacion of educaciones" >
+          <li class="border-bType 'IEducation' is not assignable to type 'NgIterable<any> | null | undefined'.ngtsottom mb-2 p-1 contenedor-lista">
+            <div class="d-flex flex-column gap-4">
+              <h3>{{ educacion.name  }}</h3>
+              <p>{{ educacion.campus }}</p>
+              <p>
+                <small>{{ educacion.date | date }}</small>
+              </p>  
+            </div>  
+            <div class="botones-acciones" *ngIf="isUrlDashboard" >
+              <app-button-edit (click)="editar(educacion)" ></app-button-edit>
+              <app-button-delete (click)="eliminar(educacion.id)" ></app-button-delete>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <p class="alert-heading">
+      No hay items cargados.
+    </p>
+  </ng-template>
+</section>

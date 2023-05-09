@@ -1,0 +1,28 @@
+<section id="contacto" class="container card mt-5 p-3">
+  <h3 class="card-header text-center">Contáctame</h3>
+  <h4 class="text-center text-info mt-1">
+    Llena este formulario y serás contactado
+  </h4>
+  <form
+    [formGroup]="formContacto"
+    class="formulario card-body"
+    (ngSubmit)="onSubmit(formContacto.value)"
+  >
+    <div class="contenido-formulario">
+      <div>
+        <label class="form-control-label">Nombre y apellido:</label>
+        <input type="text" formControlName="name" class="form-control" />
+      </div>
+      <div>
+        <label class="form-control-label">Email:</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="email@email.com"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</section>

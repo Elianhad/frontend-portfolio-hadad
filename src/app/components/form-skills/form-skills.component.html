@@ -1,0 +1,73 @@
+<div class="container-form">
+  <form
+    (submit)="onSubmitSkillForm($event)"
+    class="form-control p-4 position-relative"
+    [formGroup]="formSkills"
+  >
+    <button type="button" class="button-close" (click)="makeFormInVisible()">
+      <div class="contenedor-button">
+        <img
+          alt="Editar"
+          width="50"
+          height="50"
+          src={{deleteIcon}}
+        />
+      </div>
+    </button>
+    <div class="mt-4">
+      <label class="form-label" for="nameSkill">Habilidad</label>
+      <input
+        formControlName="nameSkill"
+        type="text"
+        class="form-control"
+        id="nameSkill"
+      />
+      <div *ngIf="nameSkill?.errors?.['required'] && nameSkill?.touched ">
+        El campo es obligatorio
+      </div>
+    </div>
+    <div class="mt-4">
+      <label class="form-label" for="image">Imagen</label>
+      <input
+        type="file"
+        accept="image/png, image/jpeg"
+        class="form-control"
+        id="imagen"
+        formControlName="imagen"
+        (change)="handleImage($event)"
+      />
+      <div *ngIf="imagen?.errors?.['required'] && imagen?.touched">
+        El campo es obligatorio
+      </div>
+    </div>
+    <div class="w-25 mt-3 position-relative card" *ngIf="filePathImg">
+      <img [src]="filePathImg" height="160" class="card-img" alt="imagen nueva" />
+      <app-button-delete
+        (click)="onDeleteImg()"
+        class="card-img-top"
+      ></app-button-delete>
+    </div>
+    <div class="mt-4">
+      <label class="form-label" for="percentage"
+        >Porcentaje de experticia</label
+      >
+      <input
+        formControlName="percentage"
+        type="number"
+        id="percentage"
+        class="form-control"
+      />
+      <div
+        *ngIf="percentage?.errors?.['required'] && percentage?.touched"
+        class="text-danger"
+      >
+        El campo es obligatorio
+      </div>
+    </div>
+
+    <button class="btn btn-primary text-center text-uppercase mt-2">
+      Aceptar
+    </button>
+    <h3 class="text-center">Habilidad</h3>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+<div class="contenedor-dashboard">
+  <app-header></app-header>
+  <app-hero [isInDashboard]="isInDashboard" ></app-hero>
+  <app-about [isInDashboard]="isInDashboard"></app-about>
+  <app-education
+  (educationSelectedEmit)="receiveSelectedItemEdu($event)"
+  ></app-education> 
+  <app-skills
+  (emitSkillToEdit)="receiveSelectedItemSkill($event)"
+  ></app-skills>
+  <app-form-education
+    *ngIf="isFormEducation"
+    class="app-form"
+    [elementToEdit]="itemEducationSelected"
+  ></app-form-education>
+  <app-form-skills 
+    *ngIf="isFormSkill" 
+    class="app-form"
+    [elementToEdit]="itemSkillSelected"
+  ></app-form-skills>
+</div>

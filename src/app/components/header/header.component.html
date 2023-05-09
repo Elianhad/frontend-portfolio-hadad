@@ -1,0 +1,70 @@
+<header class="header">
+  <div
+    class="d-flex flex-column flex-lg-row justify-content-between p-2 barra w-100"
+  >
+    <div
+      class="d-flex flex-row p-2 justify-content-center justify-content-md-between"
+    >
+      <a
+        routerLink="/"
+        class="text-white m-0 text-center align-self-center arg-prog"
+      >
+        Argentina Programa
+      </a>
+      <img
+        src="{{ ArgProgLogo }}"
+        alt="Argentina programa logo"
+        class="logo-arg"
+      />
+    </div>
+    <!--menu hamburguesa-->
+    <button
+      id="menu"
+      class="menu-icon align-self-center d-lg-none"
+      (click)="onClick()"
+      [class]="transition"
+    >
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+    <!--navegacion-->
+    <div id="nav" class="d-lg-flex" [class]="display">
+      <nav
+        class="d-flex flex-column mt-4 mt-lg-0 flex-lg-row gap-7 align-items-center nav"
+      >
+        <a routerLink="/" class="text-decoration-none text-white link-hover"
+          >Inicio</a
+        >
+        <a href="#sobre-mi" class="text-decoration-none text-white link-hover"
+          >Sobre mi</a
+        >
+        <a href="#experience" class="text-decoration-none text-white link-hover"
+        >Experiencia</a
+      >
+        <a href="#skills" class="text-decoration-none text-white link-hover"
+          >Habilidades</a
+        >
+        <a href="#contacto" class="text-decoration-none text-white link-hover"
+          >Contacto</a
+        >
+
+        <button
+          class="text-white navbar-text btn btn-primary mt-2 mt-lg-0 mx-lg-4"
+          *ngIf="!isLogin; else elseComponent"
+        >
+          <a routerLink="/login" class="text-decoration-none">Iniciar Sesión</a>
+        </button>
+        <ng-template #elseComponent>
+          <button
+          class="text-white navbar-text btn btn-secondary mt-2 mt-lg-0 mx-lg-4"
+          (click)="onClickCloseSession()"
+          >
+            Cerrar sesión
+          </button>
+        </ng-template>
+      </nav>
+    </div>
+    <!--fin de navegacion-->
+  </div>
+</header>
