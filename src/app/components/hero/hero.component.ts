@@ -5,27 +5,22 @@ import { UploadImageServiceService } from 'src/app/service/upload-image-service.
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 import { ProfileServiceService } from 'src/app/service/profile-service.service';
 import { IProfile } from 'src/app/interface/IProfile';
-import { catchError } from 'rxjs';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css'],
 })
   
-  /**
-   * TODO:
-   * reload auto tras modificar perfil
-   */
 export class HeroComponent implements OnInit {
 
   @Input() isInDashboard: boolean = false;
   formProfile: FormGroup;
   isFormActive: boolean = false;
-  
+  @Input()
   profile: IProfile = {
-    name: '',
-    image: '',
-    profession: '',
+      name: "",
+      image: "",
+      profession: ""
   }
   // manage of image
   newImageUrl: string = '';
@@ -65,7 +60,6 @@ export class HeroComponent implements OnInit {
   private getProfile() {
     this.profileService.getProfile().subscribe((res:any) => {
       const respuesta = res[0]?.profile
-      console.log(respuesta);
       
       if (respuesta === undefined) {
         this.checkProfileDataAndPutDefault(this.profileDefault)

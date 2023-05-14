@@ -1,6 +1,6 @@
 export interface IExperience {
   id?: number;
-  titulo: string;
-  descripcion: string;
-  fecha: Date
+  title: string;
+  description: string;
+  date: Date
 }

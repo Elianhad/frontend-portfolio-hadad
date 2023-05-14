@@ -4,8 +4,10 @@
     (submit)="onSubmitEducationForm($event)"
     class="form-control p-4 position-relative"
   >
-  <button class="btn btn-close"  (click)="makeFormInvisible()">
-  </button>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-close"  (click)="makeFormInvisible()">
+    </button>
+  </div>
     <label class="form-label" for="nameEd">Título</label>
     <input
       formControlName="name"

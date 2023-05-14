@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   isLogin:boolean = false
   constructor(private auth: AuthService, private router:Router){}
   ngOnInit(): void {
-      this.isLogin = this.auth.isLogin()
+    const observableMaker = of( this.auth.isLogin())
+    observableMaker.subscribe(res => this.isLogin = res)
   }
   onClick() {
     if (this.transition === 'menu-transition') {

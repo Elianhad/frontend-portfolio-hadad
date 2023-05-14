@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
+import { IProject } from 'src/app/interface/IProject';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
+import { ProjectServiceService } from 'src/app/service/project-service.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 @Component({
   selector: 'app-form-project',
@@ -11,7 +13,7 @@ import { UploadImageServiceService } from 'src/app/service/upload-image-service.
 export class FormProjectComponent {
   projectForm!: FormGroup;
   @Input()
-  isFormActive: boolean = false;
+  projectToEdit!: IProject;
 
   imgfile!: File;
   uploadTask!: UploadTaskSnapshot;
@@ -21,7 +23,8 @@ export class FormProjectComponent {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadImageServiceService,
-    private stateService: EstadosUIService
+    private stateService: EstadosUIService,
+    private projectService:ProjectServiceService
   ) {}
 
   ngOnInit() {
@@ -33,12 +36,51 @@ export class FormProjectComponent {
       linkTo: ['', Validators.required],
       skillsProject: ['', Validators.required],
     });
+    if (this.projectToEdit?.nameProject) {
+      this.projectForm.patchValue({
+        nameProject: this.projectToEdit.nameProject,
+        description: this.projectToEdit.description,
+        dateOfDevelop: this.projectToEdit.dateOfDevelop,
+        linkTo: this.projectToEdit.linkTo,
+        imageProject: this.projectToEdit.imageProject,
+        skillsProject: this.projectToEdit.skillsProject,
+      })
+    }
   }
 
-  onSubmit() {
+  onSubmit($event:any) {
+    $event.preventDefault()
     if (!this.projectForm.valid) return;
-
-    console.log(this.projectForm.value);
+    const newProject:IProject = {
+      nameProject: this.projectForm.value.nameProject,
+      description: this.projectForm.value.description,
+      dateOfDevelop: this.projectForm.value.dateOfDevelop,
+      linkTo: this.projectForm.value.linkTo,
+      imageProject: this.filePathImg,
+      skillsProject: this.projectForm.value.skillProject,
+    }
+    if (this.projectToEdit) {
+      newProject.id = this.projectToEdit.id
+      newProject.nameProject = newProject.nameProject ? newProject.nameProject : this.projectToEdit.nameProject
+      newProject.description = newProject.description ? newProject.description : this.projectToEdit.description
+      newProject.dateOfDevelop = newProject.dateOfDevelop ? newProject.dateOfDevelop : this.projectToEdit.dateOfDevelop
+      newProject.linkTo = newProject.linkTo ? newProject.linkTo : this.projectToEdit.linkTo
+      newProject.imageProject = newProject.imageProject ? newProject.imageProject : this.projectToEdit.imageProject
+      newProject.skillsProject = newProject.skillsProject ? newProject.skillsProject : this.projectToEdit.skillsProject
+      
+      this.projectService.editProject(newProject)
+      this.onCloseForm()
+      this.projectToEdit = {
+        nameProject: "",
+        description: "",
+        linkTo: "",
+        imageProject: "",
+        skillsProject: [],
+      }
+      return
+    }
+    this.projectService.addProject(newProject)
+    this.onCloseForm()
   }
   async handleImage($event: any) {
     if ($event.target.files && $event.target.files[0]) {
@@ -70,7 +112,8 @@ export class FormProjectComponent {
       .finally(() => console.log('Se completo eliminación'));
   }
   
-  onClickClose() {
-    this.isFormActive = false;
+  onCloseForm() {
+    this.stateService.changeStateProject(false)
+    this.projectForm.reset()
   }
 }

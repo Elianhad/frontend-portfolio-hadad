@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IEducation } from 'src/app/interface/IEducation';
 import { ISkills } from 'src/app/interface/ISkills';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
+import { ProfileServiceService } from 'src/app/service/profile-service.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,11 +11,13 @@ import { EstadosUIService } from 'src/app/service/estados-ui.service';
 export class DashboardComponent implements OnInit {
   isFormSkill: boolean = false;
   isFormEducation: boolean = false;
-  itemEducationSelected!: IEducation
-  itemSkillSelected!:ISkills
-  isInDashboard: boolean = true
-  
-  constructor(private uiState: EstadosUIService) {}
+  itemEducationSelected!: IEducation;
+  itemSkillSelected!: ISkills;
+  isInDashboard: boolean = true;
+  isToast: boolean = false;
+  msg!: string;
+
+  constructor(private uiState: EstadosUIService, private profileService:ProfileServiceService) {}
 
   ngOnInit(): void {
     this.uiState.stateFE.subscribe(
@@ -23,8 +26,16 @@ export class DashboardComponent implements OnInit {
     this.uiState.stateSK.subscribe(
       (state) => (this.isFormSkill = state.visibility)
     );
+    this.uiState.toast$.subscribe((res: any) => {
+      this.msg = res;
+      this.isToast = true;
+      setTimeout(() => {
+        this.isToast = false;
+      }, 1500);
+    });
   }
-  receiveSelectedItemEdu(event:any) {
+
+  receiveSelectedItemEdu(event: any) {
     this.itemEducationSelected = event;
   }
   receiveSelectedItemSkill(event: any) {

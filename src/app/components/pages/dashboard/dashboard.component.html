@@ -8,6 +8,9 @@
   <app-skills
   (emitSkillToEdit)="receiveSelectedItemSkill($event)"
   ></app-skills>
+  <app-experience
+    
+  ></app-experience>
   <app-form-education
     *ngIf="isFormEducation"
     class="app-form"
@@ -18,4 +21,7 @@
     class="app-form"
     [elementToEdit]="itemSkillSelected"
   ></app-form-skills>
+  <app-project-list [isInDashboard]="isInDashboard"></app-project-list>
 </div>
+<app-toast *ngIf="isToast" [message]="msg" ></app-toast>
+

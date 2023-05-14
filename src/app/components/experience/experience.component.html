@@ -1,23 +1,25 @@
 <section id="experience" class="container card mt-2">
- 
   <div class="card-header d-flex justify-content-between">
     <h2>Experiencia Laboral</h2>
-    <app-buttonplus (click)="makeFormVisibletoToAdd()"></app-buttonplus>
+    <app-buttonplus (click)="openForm()"></app-buttonplus>
   </div>
-  <div class="card-body" *ngFor="let experience of experiences" >
-    <div>
-      <h4>{{experience.titulo}}</h4>
+  <div *ngIf="experiences, else elseTemplate">
+    <div class="card-body d-flex justify-content-between" *ngFor="let experience of experiences">
       <div>
-        <p>{{experience.descripcion}}</p>
-        <small>{{experience.fecha}}</small>
+        <h4>{{ experience.title }}</h4>
+        <div>
+          <p>{{ experience.description }}</p>
+          <small>{{ experience.date | date }}</small>
+        </div>
       </div>
-      <div class="botones-acciones" *ngIf="isUrlDashboard" >
-        <app-button-edit (click)="editar(experience)" ></app-button-edit>
-        <app-button-delete (click)="eliminar(experience.id)" ></app-button-delete>
+      <div class="botones-acciones mt-2" *ngIf="isUrlDashboard">
+        <app-button-edit (click)="editar(experience)"></app-button-edit>
+        <app-button-delete
+          (click)="eliminar(experience?.id)"
+        ></app-button-delete>
       </div>
     </div>
   </div>
+  <ng-template #elseTemplate> No hay experiencias cargadas</ng-template>
 </section>
-<app-form-experience [isFormActive]="isFormActive" ></app-form-experience>
-
-
+<app-form-experience [isFormActive]="isFormActive" [experienceToEdit]="elementToEditFrom" ></app-form-experience>
