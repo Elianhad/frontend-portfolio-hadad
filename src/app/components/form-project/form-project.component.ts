@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
+import { IProject } from 'src/app/interface/IProject';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 @Component({
@@ -11,7 +12,7 @@ import { UploadImageServiceService } from 'src/app/service/upload-image-service.
 export class FormProjectComponent {
   projectForm!: FormGroup;
   @Input()
-  isFormActive: boolean = false;
+  projectToEdit!: IProject;
 
   imgfile!: File;
   uploadTask!: UploadTaskSnapshot;
@@ -37,8 +38,8 @@ export class FormProjectComponent {
 
   onSubmit() {
     if (!this.projectForm.valid) return;
-
     console.log(this.projectForm.value);
+    this.onCloseForm()
   }
   async handleImage($event: any) {
     if ($event.target.files && $event.target.files[0]) {
@@ -70,7 +71,7 @@ export class FormProjectComponent {
       .finally(() => console.log('Se completo eliminación'));
   }
   
-  onClickClose() {
-    this.isFormActive = false;
+  onCloseForm() {
+   this.stateService.changeStateProject(false)
   }
 }

@@ -1,31 +1,58 @@
 <div class="container-form" *ngIf="isFormActive">
   <form
-  class="form-control p-4 position-relative"
-  (submit)="submitForm()"
+    class="form-control p-4 position-relative"
+    (submit)="submitForm($event)"
+    [formGroup]="form"
   >
-  <button type="button" class="btn btn-close" (click)="onClickClose()" >
-  </button> 
+    <div class="d-flex justify-content-end">
+      <button
+        type="button"
+        class="btn btn-close"
+        (click)="onClickClose()"
+      ></button>
+    </div>
     <h2 class="text-center mb-4">Experiencia</h2>
     <div class="form-group">
-      <label>Título:</label>
+      <label for="titulo">Título</label>
       <input
         type="text"
-        [(ngModel)]="titulo"
-        name="titulo"
         class="form-control"
+        id="titulo"
+        formControlName="titulo"
+        required
       />
     </div>
+    <div *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched">
+      <div *ngIf="form.get('titulo')?.errors">El título es requerida.</div>
+    </div>
     <div class="form-group">
-      <label>Descripción:</label>
+      <label for="descripcion">Descripción</label>
       <textarea
-        [(ngModel)]="descripcion"
-        name="descripcion"
         class="form-control"
+        id="descripcion"
+        formControlName="descripcion"
+        required
       ></textarea>
     </div>
-
-    <label>Fecha:</label>
-    <input type="date" [(ngModel)]="fecha" name="fecha" class="form-control" />
+    <div
+      *ngIf="
+        form.get('descripcion')?.invalid && form.get('descripcion')?.touched
+      "
+    >
+      <div *ngIf="form.get('descripcion')?.errors">
+        La descripcion es requerida.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fecha">Fecha</label>
+      <input
+        type="date"
+        class="form-control"
+        id="fecha"
+        formControlName="fecha"
+        required
+      />
+    </div>
     <button type="submit" class="btn btn-outline-primary mt-4">Aceptar</button>
   </form>
 </div>

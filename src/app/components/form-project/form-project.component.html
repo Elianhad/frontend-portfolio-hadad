@@ -1,11 +1,24 @@
-<div class="container-form overflow-hidden" *ngIf="isFormActive">
-  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class='form-control p-4 overflow-scroll'>
+<div class="container-form overflow-hidden">
+  <form
+    [formGroup]="projectForm"
+    (ngSubmit)="onSubmit()"
+    class="form-control p-4 overflow-scroll"
+  >
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-close" (click)="onClickClose()" ></button>
+      <button
+        type="button"
+        class="btn btn-close"
+        (click)="onCloseForm()"
+      ></button>
     </div>
     <h3>Projecto</h3>
     <label for="nameProject" class="mt-2">Project Name:</label>
-    <input type="text" id="nameProject" formControlName="nameProject" class="form-control" />
+    <input
+      type="text"
+      id="nameProject"
+      formControlName="nameProject"
+      class="form-control"
+    />
     <div
       *ngIf="
         projectForm.get('nameProject')?.invalid &&
@@ -18,7 +31,11 @@
     </div>
 
     <label for="description" class="mt-2">Description:</label>
-    <textarea id="description" formControlName="description" class="form-control "></textarea>
+    <textarea
+      id="description"
+      formControlName="description"
+      class="form-control"
+    ></textarea>
     <div
       *ngIf="
         projectForm.get('description')?.invalid &&
@@ -31,7 +48,12 @@
     </div>
 
     <label for="dateOfDevelop" class="mt-2">Fecha de desarrollo:</label>
-    <input type="date" id="dateOfDevelop" formControlName="dateOfDevelop" class="form-control" />
+    <input
+      type="date"
+      id="dateOfDevelop"
+      formControlName="dateOfDevelop"
+      class="form-control"
+    />
     <div
       *ngIf="
         projectForm.get('dateOfDevelop')?.invalid &&
@@ -44,19 +66,27 @@
     </div>
 
     <label for="linkTo" class="mt-2">Link al proyecto</label>
-    <input type="text" id="linkTo" formControlName="linkTo" class="form-control" />
+    <input
+      type="text"
+      id="linkTo"
+      formControlName="linkTo"
+      class="form-control"
+    />
     <div
       *ngIf="
         projectForm.get('linkTo')?.invalid && projectForm.get('linkTo')?.touched
       "
     >
-      <div *ngIf="projectForm.get('linkTo')?.errors">
-        El link es requerido.
-      </div>
+      <div *ngIf="projectForm.get('linkTo')?.errors">El link es requerido.</div>
     </div>
 
     <label for="skillsProject" class="mt-2">Skills:</label>
-    <input type="text" id="skillsProject" formControlName="skillsProject" class="form-control" />
+    <input
+      type="text"
+      id="skillsProject"
+      formControlName="skillsProject"
+      class="form-control"
+    />
     <div
       *ngIf="
         projectForm.get('skillsProject')?.invalid &&
@@ -67,9 +97,16 @@
         Las habilidades para el proyecto son requeridas
       </div>
     </div>
-    
+
     <label for="imageProject" class="mt-2">Imagen:</label>
-    <input type="file" accept="jpg/png" (change)="handleImage($event)" id="imageProject" formControlName="imageProject" class="form-control" />
+    <input
+      type="file"
+      accept="jpg/png"
+      (change)="handleImage($event)"
+      id="imageProject"
+      formControlName="imageProject"
+      class="form-control"
+    />
 
     <button type="submit" class="btn btn-outline-primary mt-4">Aceptar</button>
   </form>

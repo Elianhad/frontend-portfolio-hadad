@@ -4,16 +4,10 @@
     class="form-control p-4 position-relative"
     [formGroup]="formSkills"
   >
-    <button type="button" class="button-close" (click)="makeFormInVisible()">
-      <div class="contenedor-button">
-        <img
-          alt="Editar"
-          width="50"
-          height="50"
-          src={{deleteIcon}}
-        />
-      </div>
+  <div class="d-flex justify-content-end">
+    <button type="button" class=" btn btn-close" (click)="makeFormInVisible()">
     </button>
+  </div>
     <div class="mt-4">
       <label class="form-label" for="nameSkill">Habilidad</label>
       <input

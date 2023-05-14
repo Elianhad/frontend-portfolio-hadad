@@ -16,6 +16,7 @@ export class ProfileServiceService {
     return this.http.get(this.API_URL + 'user').pipe(catchError(this.handleError('getProfile', [])))
   }
   public putProfile(profile: IProfile) {
+    console.log(profile)
     const { id } = profile
     return this.http.put(this.API_URL + `profile/editar/${id}`, profile).pipe(catchError(this.handleError('putProfile', [])))
   }
