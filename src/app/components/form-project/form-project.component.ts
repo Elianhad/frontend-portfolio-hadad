@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
 import { IProject } from 'src/app/interface/IProject';
 import { EstadosUIService } from 'src/app/service/estados-ui.service';
+import { ProjectServiceService } from 'src/app/service/project-service.service';
 import { UploadImageServiceService } from 'src/app/service/upload-image-service.service';
 @Component({
   selector: 'app-form-project',
@@ -22,7 +23,8 @@ export class FormProjectComponent {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadImageServiceService,
-    private stateService: EstadosUIService
+    private stateService: EstadosUIService,
+    private projectService:ProjectServiceService
   ) {}
 
   ngOnInit() {
@@ -36,9 +38,31 @@ export class FormProjectComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit($event:any) {
+    $event.preventDefault()
     if (!this.projectForm.valid) return;
-    console.log(this.projectForm.value);
+    const newProject:IProject = {
+      nameProject: this.projectForm.value.nameProject,
+      description: this.projectForm.value.description,
+      dateOfDevelop: this.projectForm.value.dateOfDevelop,
+      linkTo: this.projectForm.value.linkTo,
+      imageProject: this.projectForm.value.imageProject,
+      skillsProject: this.projectForm.value.skillProject,
+    }
+    if (this.projectToEdit) {
+      newProject.id = this.projectToEdit.id
+      newProject.nameProject = newProject.nameProject ? newProject.nameProject : this.projectToEdit.nameProject
+      newProject.description = newProject.description ? newProject.description : this.projectToEdit.description
+      newProject.dateOfDevelop = newProject.dateOfDevelop ? newProject.dateOfDevelop : this.projectToEdit.dateOfDevelop
+      newProject.linkTo = newProject.linkTo ? newProject.linkTo : this.projectToEdit.linkTo
+      newProject.imageProject = newProject.imageProject ? newProject.imageProject : this.projectToEdit.imageProject
+      newProject.skillsProject = newProject.skillsProject ? newProject.skillsProject : this.projectToEdit.skillsProject
+      
+      this.projectService.editProject(newProject)
+      this.onCloseForm()
+      return
+    }
+    this.projectService.addProject(newProject)
     this.onCloseForm()
   }
   async handleImage($event: any) {
@@ -72,6 +96,7 @@ export class FormProjectComponent {
   }
   
   onCloseForm() {
-   this.stateService.changeStateProject(false)
+    this.stateService.changeStateProject(false)
+    this.projectForm.reset()
   }
 }

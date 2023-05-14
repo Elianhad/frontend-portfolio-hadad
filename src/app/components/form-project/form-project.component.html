@@ -1,7 +1,7 @@
 <div class="container-form overflow-hidden">
   <form
     [formGroup]="projectForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="onSubmit($event)"
     class="form-control p-4 overflow-scroll"
   >
     <div class="d-flex justify-content-end">
@@ -99,14 +99,17 @@
     </div>
 
     <label for="imageProject" class="mt-2">Imagen:</label>
-    <input
-      type="file"
-      accept="jpg/png"
-      (change)="handleImage($event)"
-      id="imageProject"
-      formControlName="imageProject"
-      class="form-control"
-    />
+    <div>
+      <input
+        type="file"
+        accept="jpg/png"
+        (change)="handleImage($event)"
+        id="imageProject"
+        formControlName="imageProject"
+        class="form-control"
+      />
+      <span class="btn btn-check" *ngIf="completeUpload"></span>
+    </div>
 
     <button type="submit" class="btn btn-outline-primary mt-4">Aceptar</button>
   </form>
