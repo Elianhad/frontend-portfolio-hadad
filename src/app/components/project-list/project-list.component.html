@@ -5,13 +5,15 @@
   </div>
   <div class="card-group mt-4" *ngIf="projects; else templateElse">
     <div class="card" *ngFor="let project of projects">
-      <img
+      <div class="card-img-top d-flex justify-content-center">
+        <img
         src="{{ project.imageProject }}"
-        class="card-img-top"
         alt="{{ project.nameProject }}"
-      />
+        height="300"
+        />
+      </div>
       <div class="card-body">
-        <div *ngIf="isInDashboard" class="d-flex gap-2">
+        <div *ngIf="isInDashboard" class="d-flex gap-2 justify-content-center">
           <app-button-delete (click)="eliminar(project.id)"></app-button-delete>
           <app-button-edit (click)="editar(project)"></app-button-edit>
         </div>
@@ -19,7 +21,7 @@
         <p class="card-text">
           {{ project.description }}
         </p>
-        <small>{{ project.linkTo }}</small>
+        <a href="project.linkTo" class="card-link">{{ project.linkTo }}</a>
       </div>
       <div class="card-footer">
         <small class="text-muted">{{ project.dateOfDevelop }}</small>

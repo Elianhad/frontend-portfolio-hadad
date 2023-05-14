@@ -27,7 +27,9 @@ export class EducationComponent implements OnInit {
   }];
   subject$ = new Subject<void>();
   isUrlDashboard: boolean = false;
-  @Output() educationSelectedEmit: EventEmitter<IEducation> =
+
+  @Output()
+  educationSelectedEmit: EventEmitter<IEducation> =
     new EventEmitter<IEducation>();
  
   constructor(
@@ -43,6 +45,7 @@ export class EducationComponent implements OnInit {
       this.isUrlDashboard = value[0].path === 'dashboard';
     });
     this.getEducation()
+    this.cdr.detectChanges()
   }
 
   makeFormVisibletoToAdd(): void {

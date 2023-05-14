@@ -3,7 +3,7 @@ export interface IProject {
   nameProject: String,
   description:String,
   imageProject: String,
-  dateOfDevelop: Date,
+  dateOfDevelop?: Date,
   linkTo: String,
   skillsProject:String[]
 }

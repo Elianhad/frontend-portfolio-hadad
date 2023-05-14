@@ -27,14 +27,13 @@ export class FormExperienceComponent implements OnInit {
       descripcion: ['', Validators.required],
       fecha: ['', Validators.required],
     });
-    if (this.experienceToEdit) {
+    if (this.experienceToEdit?.title) {
       this.form.patchValue({
         titulo: this.experienceToEdit.title,
         descripcion: this.experienceToEdit.description,
         fecha: this.experienceToEdit.date,
       })
     }
-    console.log(this.experienceToEdit)
   }
   onClickClose() {
     this.stateUI.changeStateFormExp(false);
@@ -42,20 +41,28 @@ export class FormExperienceComponent implements OnInit {
   }
   submitForm($event: any) {
     if (!this.form.valid) return;
-    if (this.experienceToEdit) {
-      this.experienceToEdit = {
-        title: this.form.value.titulo,
-        description: this.form.value.descripcion,
-        date: this.form.value.fecha,
-      };
-      this.experienceService.editExp(this.experienceToEdit);
-      this.onClickClose();
-    }
-    const newExperience = {
+    const newExperience:IExperience = {
       title: this.form.value.titulo,
       description: this.form.value.descripcion,
-      date: this.form.value.fecha,
-    };
+      date: this.form.value.fecha
+    }
+    if (this.experienceToEdit) {
+      newExperience.id= this.experienceToEdit.id,
+        newExperience.title = newExperience.title ? newExperience.title : this.experienceToEdit.title,
+        newExperience.description = newExperience.description ? newExperience.description : this.experienceToEdit.description,
+        newExperience.date = newExperience.date ? newExperience.date : this.experienceToEdit.date
+      
+        
+      this.experienceService.editExp(newExperience);
+      
+      this.onClickClose();
+      this.experienceToEdit = {
+        title: '',
+        description: '',
+        date: new Date()
+      }
+      return
+    }
     this.experienceService.addExp(newExperience);
     this.onClickClose();
   }

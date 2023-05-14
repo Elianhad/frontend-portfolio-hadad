@@ -36,6 +36,16 @@ export class FormProjectComponent {
       linkTo: ['', Validators.required],
       skillsProject: ['', Validators.required],
     });
+    if (this.projectToEdit?.nameProject) {
+      this.projectForm.patchValue({
+        nameProject: this.projectToEdit.nameProject,
+        description: this.projectToEdit.description,
+        dateOfDevelop: this.projectToEdit.dateOfDevelop,
+        linkTo: this.projectToEdit.linkTo,
+        imageProject: this.projectToEdit.imageProject,
+        skillsProject: this.projectToEdit.skillsProject,
+      })
+    }
   }
 
   onSubmit($event:any) {
@@ -46,7 +56,7 @@ export class FormProjectComponent {
       description: this.projectForm.value.description,
       dateOfDevelop: this.projectForm.value.dateOfDevelop,
       linkTo: this.projectForm.value.linkTo,
-      imageProject: this.projectForm.value.imageProject,
+      imageProject: this.filePathImg,
       skillsProject: this.projectForm.value.skillProject,
     }
     if (this.projectToEdit) {
@@ -60,6 +70,13 @@ export class FormProjectComponent {
       
       this.projectService.editProject(newProject)
       this.onCloseForm()
+      this.projectToEdit = {
+        nameProject: "",
+        description: "",
+        linkTo: "",
+        imageProject: "",
+        skillsProject: [],
+      }
       return
     }
     this.projectService.addProject(newProject)
