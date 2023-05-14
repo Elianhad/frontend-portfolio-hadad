@@ -4,17 +4,17 @@ import { Router } from '@angular/router';
 import { EstadosUIService } from '../estados-ui.service';
 import { catchError, of } from 'rxjs';
 import { Buffer } from 'buffer';
+import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private API_URL = "http://localhost:8080/login";
   private token!:string;
   constructor(private http : HttpClient, private router: Router, private estadosUI: EstadosUIService) { }
   
   login(email:string, password:string){
     //  logica de inicio de sesion con res de JWT
-    this.http.post(this.API_URL, { email, password }).pipe(catchError((error: HttpErrorResponse) => {
+    this.http.post(environment.api_url_base + "login" , { email, password }).pipe(catchError((error: HttpErrorResponse) => {
       this.estadosUI.showToast(error.error);
       return of() // Aquí se accede al mensaje de error devuelto por el servidor
     })).subscribe((res: any) => {
