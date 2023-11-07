@@ -1,28 +1,53 @@
-# Frontend -- Portfolio Argentina Programa
+#Proyecto AngularJS con Spring Boot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Este es un proyecto que combina AngularJS en el frontend con Bootstrap CSS para crear una aplicación web. En el backend, se utiliza Java con Spring Boot. El proyecto también incluye servicios, autenticación basada en tokens, y utiliza RxJS para gestionar las solicitudes asincrónicas.
 
-## Login al dashboard para testear
+##Credenciales de uso
 
-Email: yo-programo@correo.com
-Password: 123qwe
+Para acceder a la aplicación, puedes utilizar las siguientes credenciales:
+`
+    Email: yo-programo@correo.com
+    Contraseña: 123qwe
+`
+Asegúrate de usar estas credenciales para iniciar sesión y explorar la funcionalidad de la aplicación.
+Despliegue del backend
 
-## Install project
+El backend de la aplicación se encuentra desplegado en Render. Sin embargo, ten en cuenta que debido a la capa gratuita en Render, el servidor no está siempre disponible. 
 
-Run `npm install`
+##Instrucciones de ejecución
 
-## Development server
+Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
+Requisitos previos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Asegúrate de tener instalados los siguientes componentes en tu sistema:
 
-## Build
+    * Node.js
+    * Angular CLI
+    * Java
+   
+###Instrucciones
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    Clona el repositorio:
 
-## Running unit tests
+    bash
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+git clone [URL_DEL_REPOSITORIO]
 
-## Running end-to-end tests
+####Navega a la carpeta del proyecto:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+bash
+
+cd nombre-del-proyecto
+
+####Instala las dependencias del frontend:
+`
+npm install
+`
+####Inicia el servidor frontend:
+`
+ng serve
+`
+
+
+##Funcionalidades
+El portfolio dispone de una página principal donde se puede ver la información que se trae desde el backend. La aplicación tiene función de autenticación y permanencia por token. Una vez dentro, contiene un dashboard que es réplica de la página principal donde se puede realizar operaciones CRUD.
